@@ -302,6 +302,8 @@ public:
     template<class T>
     static T *ExNew(const CrsData::SObject &object) { return new T(object); }
 
+    ExObjColBase *getExBounds() const { return mExBounds; }
+
     ExObjColBase *mExBounds;
     JGeometry::TVec3f _150;
     f32 _15c;
