@@ -14,6 +14,7 @@
 #include "Sato/ItemObj.h"
 #include "Sato/ObjCollision.h"
 #include "Sato/stMath.h"
+#include "Shiraiwa/AnmPlayer.h"
 
 // TODO: Remove Forward declarations
 class ObjColBase; // ObjCollision.h
@@ -35,6 +36,12 @@ private:
 struct GeoAnmTableEntry {
     u32 _0; // unused?
     const char *fileName;
+};
+
+// TODO: This pattern may apply elsewhere... look for better place for it to exist.
+struct TJugemAnmTableEntry {
+    TAnmInfo *tAnmInfo;
+    u8 arraySize;
 };
 
 class GeoObjSupervisor
