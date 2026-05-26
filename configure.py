@@ -1080,7 +1080,7 @@ config.libs = [
         [
             Object(NonMatching, "Kameda/Motor.cpp"),
             Object(NonMatching, "Kameda/MotorManager.cpp"),
-            Object(NonMatching, "Kameda/J2DManager.cpp"),
+            Object(Matching, "Kameda/J2DManager.cpp"),
             Object(Matching, "Kameda/Task.cpp"),
             Object(NonMatching, "Kameda/Goal2D.cpp"),
             Object(NonMatching, "Kameda/PauseManager.cpp"),
@@ -1220,7 +1220,7 @@ config.libs = [
             Object(NonMatching, "Kawano/osage.cpp"),
             Object(NonMatching, "Kawano/accessory.cpp"),
             Object(NonMatching, "Kawano/laurel.cpp"),
-            Object(NonMatching, "Kawano/driverObj.cpp"),
+            Object(Matching, "Kawano/driverObj.cpp"),
             Object(Matching, "Kawano/SceneTitleLine.cpp"),
             Object(NonMatching, "Kawano/StaffRoll2D.cpp")
         ]
@@ -1346,8 +1346,8 @@ config.libs = [
             Object(NonMatching, "Shiraiwa/MapObjDossun.cpp"),
             Object(Matching, "Shiraiwa/JugemMain.cpp"),
             Object(Matching, "Shiraiwa/JugemLap.cpp"),
-            Object(NonMatching, "Shiraiwa/Interp.cpp"),
-            Object(Equivalent, "Shiraiwa/JugemReverse.cpp"),
+            Object(Matching, "Shiraiwa/Interp.cpp"),
+            Object(Matching, "Shiraiwa/JugemReverse.cpp"),
             Object(Matching, "Shiraiwa/JugemRescue.cpp"),
             Object(Matching, "Shiraiwa/JugemVoidRod.cpp"),
             Object(Matching, "Shiraiwa/JugemStart.cpp"),
