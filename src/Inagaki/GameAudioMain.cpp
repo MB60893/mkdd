@@ -1,6 +1,8 @@
 #include "Inagaki/GameAudioMain.h"
 #include "Inagaki/GameMapSoundMgr.h"
 
+#include "JSystem/JAudio/System/JASAudioThread.h"
+
 namespace GameAudio {
 
 Main *Main::msBasic;
@@ -12,7 +14,9 @@ Main::Main() {
 
 void Main::init(JKRSolidHeap *, u32, void *, void *, u32) {}
 
-void Main::bootDSP() {}
+void Main::bootDSP() {
+    JASAudioThread::bootDSP();
+}
 
 bool Main::isActive() {}
 
