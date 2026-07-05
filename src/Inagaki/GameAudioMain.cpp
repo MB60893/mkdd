@@ -18,7 +18,9 @@ void Main::bootDSP() {
     JASAudioThread::bootDSP();
 }
 
-bool Main::isActive() {}
+bool Main::isActive() {
+    return _48[0] & 0x10;
+}
 
 void Main::initRaceSound() {}
 
