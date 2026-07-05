@@ -1,7 +1,8 @@
 #include "Inagaki/GameAudioMain.h"
-#include "Inagaki/GameMapSoundMgr.h"
 
 #include "JSystem/JAudio/System/JASAudioThread.h"
+#include "JSystem/JAudio/System/JASWaveArcLoader.h"
+#include "JSystem/JAudio/System/JASWaveBank.h"
 
 namespace GameAudio {
 
@@ -30,7 +31,23 @@ void Main::changeSection(u32) {}
 
 void Main::checkSection() {}
 
-bool Main::isWaveLoaded(WS_ID) {}
+bool Main::isWaveLoaded(WS_ID id) {
+    JAUSectionHeap* sectionHeap = JASGlobalInstance<JAUSectionHeap>::sInstance;
+    if(sectionHeap != nullptr)
+    {
+        JASWaveBank* bank = sectionHeap->sectionHeapData_.waveBankTable.getWaveBank(id);
+
+        if(bank != nullptr)
+        {
+            JASWaveArc* arc = bank->getWaveArc(0);
+            if (arc->_4c == 2) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
 
 void Main::checkCourceOnRace() {}
 
