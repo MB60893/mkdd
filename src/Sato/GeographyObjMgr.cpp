@@ -39,15 +39,14 @@
 #include "Shiraiwa/JugemMain.h"
 #include "Shiraiwa/JugemRodItem.h"
 #include "Shiraiwa/LensFlare.h"
-//#include "Shiraiwa/MapObjDossun.h"
 //#include "Shiraiwa/MapObjPoihana.h"
-//#include "Shiraiwa/MapObjWanwan.h"
 #include "Shiraiwa/Objects/MapObjAward.h"
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
 #include "Shiraiwa/Objects/MapObjDonkyRockGen.h"
 #include "Shiraiwa/Objects/MapObjDonkyTree.h"
 #include "Shiraiwa/Objects/MapObjDossun.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
+#include "Shiraiwa/Objects/MapObjWanwan.h"
 #include "Sato/GeographyObjMgr.h"
 
 #define GEO_OBJ_NEW(GeoClassName) \
@@ -101,9 +100,9 @@ GEO_OBJ_NEW_S(TJugemFlag);
 GEO_OBJ_NEW_S(TJugemHeadLamp);
 GEO_OBJ_NEW(GeoSignal);
 GEO_OBJ_NEW(GeoCannon);
-// GEO_OBJ_NEW(TMapObjWanwan);
-// GEO_OBJ_NEW_S(TMapObjWanwanChain);
-// GEO_OBJ_NEW_S(TMapObjWanwanPile);
+GEO_OBJ_NEW(TMapObjWanwan);
+GEO_OBJ_NEW_S(TMapObjWanwanChain);
+GEO_OBJ_NEW_S(TMapObjWanwanPile);
 // GEO_OBJ_NEW(TMapObjSkyShip);
 GEO_OBJ_NEW_S(TMapObjDonkyRock);
 GEO_OBJ_NEW(TMapObjDonkyTree);
