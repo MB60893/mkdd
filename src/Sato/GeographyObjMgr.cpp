@@ -45,6 +45,7 @@
 #include "Shiraiwa/Objects/MapObjAward.h"
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
 #include "Shiraiwa/Objects/MapObjDonkyRockGen.h"
+#include "Shiraiwa/Objects/MapObjDonkyTree.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Sato/GeographyObjMgr.h"
 
@@ -104,7 +105,7 @@ GEO_OBJ_NEW(GeoCannon);
 // GEO_OBJ_NEW_S(TMapObjWanwanPile);
 // GEO_OBJ_NEW(TMapObjSkyShip);
 GEO_OBJ_NEW_S(TMapObjDonkyRock);
-// GEO_OBJ_NEW_S(TMapObjDonkyTree);
+GEO_OBJ_NEW(TMapObjDonkyTree);
 GEO_OBJ_NEW(GeoDkCloud);
 GEO_OBJ_NEW_S(GeoWaterUp);
 GEO_OBJ_NEW_S(GeoWaterUp2);
@@ -174,7 +175,7 @@ GEO_OBJ_NEW(TMapObjAwardItemBox);
 GEO_OBJ_NEW(TMapObjAntLion);
 // GEO_OBJ_NEW(TMapObjPakkun);
 GEO_OBJ_NEW(GeoKinojii);
-// GEO_OBJ_NEW(TMapObjDinoTree);
+GEO_OBJ_NEW(TMapObjDinoTree);
 // GEO_OBJ_NEW(TMapObjDemoFountain);
 // GEO_OBJ_NEW(TMapObjKpGear);
 // GEO_OBJ_NEW(TMapObjKpFireBar);
@@ -182,7 +183,7 @@ GEO_OBJ_NEW(GeoKinojii);
 // GEO_OBJ_NEW(TMapObjPtera);
 // GEO_OBJ_NEW(TMapObjPeachTree2);
 // GEO_OBJ_NEW(TMapObjYoshiHeli);
-// GEO_OBJ_NEW(TMapObjDesertTree);
+GEO_OBJ_NEW(TMapObjDesertTree);
 // GEO_OBJ_NEW(TMapObjWluSearchLight);
 // GEO_OBJ_NEW(TMapObjVentilator);
 // GEO_OBJ_NEW_S(TShineArrow);
