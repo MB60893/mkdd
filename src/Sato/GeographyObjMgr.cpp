@@ -66,7 +66,7 @@ template<> ExGeoClassName *ExGeographyObj::ExNew<ExGeoClassName>(const CrsData::
 GEO_OBJ_NEW_S(GeoItemBox);
 GEO_OBJ_NEW_S(GeoDoubleItemBox);
 GEO_OBJ_NEW(GeoF_ItemBox);
-// GEO_OBJ_NEW_S(GeoStartLine);
+GEO_OBJ_NEW_S(GeoStartLine);
 GEO_OBJ_NEW(GeoMarioTree1);
 GEO_OBJ_NEW(GeoMarioKinoko1);
 // GEO_OBJ_NEW(GeoMarioFlower1);
