@@ -43,6 +43,7 @@
 //#include "Shiraiwa/MapObjPoihana.h"
 //#include "Shiraiwa/MapObjWanwan.h"
 #include "Shiraiwa/Objects/MapObjAward.h"
+#include "Shiraiwa/Objects/MapObjDonkyRock.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Sato/GeographyObjMgr.h"
 
@@ -101,7 +102,7 @@ GEO_OBJ_NEW(GeoCannon);
 // GEO_OBJ_NEW_S(TMapObjWanwanChain);
 // GEO_OBJ_NEW_S(TMapObjWanwanPile);
 // GEO_OBJ_NEW(TMapObjSkyShip);
-// GEO_OBJ_NEW_S(TMapObjDonkyRock);
+GEO_OBJ_NEW_S(TMapObjDonkyRock);
 // GEO_OBJ_NEW_S(TMapObjDonkyTree);
 GEO_OBJ_NEW(GeoDkCloud);
 GEO_OBJ_NEW_S(GeoWaterUp);
