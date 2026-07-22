@@ -69,7 +69,7 @@ GEO_OBJ_NEW(GeoF_ItemBox);
 GEO_OBJ_NEW_S(GeoStartLine);
 GEO_OBJ_NEW(GeoMarioTree1);
 GEO_OBJ_NEW(GeoMarioKinoko1);
-// GEO_OBJ_NEW(GeoMarioFlower1);
+GEO_OBJ_NEW(GeoMarioFlower1);
 // GEO_OBJ_NEW(TMapObjDossun);
 GEO_OBJ_NEW(GeoNormCar);
 GEO_OBJ_NEW_S(GeoCarShadow);
