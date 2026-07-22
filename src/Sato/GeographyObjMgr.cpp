@@ -46,6 +46,7 @@
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
 #include "Shiraiwa/Objects/MapObjDonkyRockGen.h"
 #include "Shiraiwa/Objects/MapObjDonkyTree.h"
+#include "Shiraiwa/Objects/MapObjDossun.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Sato/GeographyObjMgr.h"
 
@@ -73,7 +74,7 @@ GEO_OBJ_NEW_S(GeoStartLine);
 GEO_OBJ_NEW(GeoMarioTree1);
 GEO_OBJ_NEW(GeoMarioKinoko1);
 GEO_OBJ_NEW(GeoMarioFlower1);
-// GEO_OBJ_NEW(TMapObjDossun);
+GEO_OBJ_NEW(TMapObjDossun);
 GEO_OBJ_NEW(GeoNormCar);
 GEO_OBJ_NEW_S(GeoCarShadow);
 GEO_OBJ_NEW_S(GeoBombShadow);
