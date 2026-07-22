@@ -48,6 +48,7 @@
 #include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
+#include "Shiraiwa/Objects/MapObjSnowRock.h"
 #include "Shiraiwa/Objects/MapObjWanwan.h"
 #include "Sato/GeographyObjMgr.h"
 
@@ -124,7 +125,7 @@ GEO_OBJ_NEW(TMapObjGeyserSearch);
 // GEO_OBJ_NEW_S(TTestStrBarrel);
 // GEO_OBJ_NEW_S(TTestStrItem);
 // GEO_OBJ_NEW(TMapObjPeachTree);
-// GEO_OBJ_NEW(TMapObjSnowRock);
+GEO_OBJ_NEW(TMapObjSnowRock);
 // GEO_OBJ_NEW(TTestRollObj);
 // GEO_OBJ_NEW(TMapObjFountain);
 // GEO_OBJ_NEW(TMapObjHeyho);
