@@ -44,6 +44,7 @@
 //#include "Shiraiwa/MapObjWanwan.h"
 #include "Shiraiwa/Objects/MapObjAward.h"
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
+#include "Shiraiwa/Objects/MapObjDonkyRockGen.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Sato/GeographyObjMgr.h"
 
@@ -192,7 +193,7 @@ GEO_OBJ_NEW(GeoKinojii);
 // GEO_OBJ_NEW(TMapObjUFO);
 GEO_OBJ_NEW_S(GeoWaterDown);
 GEO_OBJ_NEW_S(GeoWaterMiddleD);
-// GEO_OBJ_NEW(TMapObjDonkyRockGen);
+GEO_OBJ_NEW(TMapObjDonkyRockGen);
 // GEO_OBJ_NEW(TMapObjFireCircle);
 GEO_OBJ_NEW(GeoItemGen);
 // GEO_OBJ_NEW(TSMAButterflyGen);
