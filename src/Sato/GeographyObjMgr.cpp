@@ -54,6 +54,7 @@
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
 #include "Shiraiwa/Objects/MapObjSnowMan.h"
 #include "Shiraiwa/Objects/MapObjSnowRock.h"
+#include "Shiraiwa/Objects/MapObjSun.h"
 #include "Shiraiwa/Objects/MapObjWanwan.h"
 #include "Shiraiwa/Objects/MapObjWluArrow.h"
 #include "Shiraiwa/TestRollObj.h"
@@ -144,7 +145,7 @@ GEO_OBJ_NEW(TMapObjSnowMan);
 GEO_OBJ_NEW(TMapObjIceBlock);
 GEO_OBJ_NEW(TMapObjNoMove);
 GEO_OBJ_NEW(GeoKuribo);
-// GEO_OBJ_NEW(TMapObjSun);
+GEO_OBJ_NEW(TMapObjSun);
 // GEO_OBJ_NEW(TMapObjBubble);
 // GEO_OBJ_NEW(TMapObjDesun);
 // GEO_OBJ_NEW(TMapObjSandPillar);
