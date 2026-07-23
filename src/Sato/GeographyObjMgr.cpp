@@ -45,6 +45,7 @@
 #include "Shiraiwa/Objects/MapObjDonkyRockGen.h"
 #include "Shiraiwa/Objects/MapObjDonkyTree.h"
 #include "Shiraiwa/Objects/MapObjDossun.h"
+#include "Shiraiwa/Objects/MapObjFountain.h"
 #include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
@@ -129,7 +130,7 @@ GEO_OBJ_NEW_S(TTestStrItem);
 // GEO_OBJ_NEW(TMapObjPeachTree);
 GEO_OBJ_NEW(TMapObjSnowRock);
 GEO_OBJ_NEW(TTestRollObj);
-// GEO_OBJ_NEW(TMapObjFountain);
+GEO_OBJ_NEW(TMapObjFountain);
 // GEO_OBJ_NEW(TMapObjHeyho);
 // GEO_OBJ_NEW_S(TMapObjSubHeyho);
 // GEO_OBJ_NEW(TMapObjSanbo);
@@ -181,7 +182,7 @@ GEO_OBJ_NEW(TMapObjAntLion);
 // GEO_OBJ_NEW(TMapObjPakkun);
 GEO_OBJ_NEW(GeoKinojii);
 GEO_OBJ_NEW(TMapObjDinoTree);
-// GEO_OBJ_NEW(TMapObjDemoFountain);
+GEO_OBJ_NEW(TMapObjDemoFountain);
 // GEO_OBJ_NEW(TMapObjKpGear);
 // GEO_OBJ_NEW(TMapObjKpFireBar);
 // GEO_OBJ_NEW(TMapObjSwimNossie);
