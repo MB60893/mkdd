@@ -52,6 +52,7 @@
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
 #include "Shiraiwa/Objects/MapObjSnowRock.h"
 #include "Shiraiwa/Objects/MapObjWanwan.h"
+#include "Shiraiwa/Objects/MapObjWluArrow.h"
 #include "Shiraiwa/TestRollObj.h"
 #include "Shiraiwa/TestString.h"
 #include "Sato/GeographyObjMgr.h"
@@ -135,7 +136,7 @@ GEO_OBJ_NEW(TMapObjFountain);
 GEO_OBJ_NEW(TMapObjHeyho);
 GEO_OBJ_NEW_S(TMapObjSubHeyho);
 // GEO_OBJ_NEW(TMapObjSanbo);
-// GEO_OBJ_NEW(TMapObjWlArrow);
+GEO_OBJ_NEW(TMapObjWlArrow);
 // GEO_OBJ_NEW(TMapObjSnowMan);
 // GEO_OBJ_NEW(TMapObjIceBlock);
 // GEO_OBJ_NEW(TMapObjNoMove);
@@ -191,7 +192,7 @@ GEO_OBJ_NEW(TMapObjDemoFountain);
 // GEO_OBJ_NEW(TMapObjPeachTree2);
 // GEO_OBJ_NEW(TMapObjYoshiHeli);
 GEO_OBJ_NEW(TMapObjDesertTree);
-// GEO_OBJ_NEW(TMapObjWluSearchLight);
+GEO_OBJ_NEW(TMapObjWluSearchLight);
 // GEO_OBJ_NEW(TMapObjVentilator);
 // GEO_OBJ_NEW_S(TShineArrow);
 GEO_OBJ_NEW(TMapObjUFO);
