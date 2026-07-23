@@ -51,6 +51,7 @@
 #include "Shiraiwa/Objects/MapObjSnowRock.h"
 #include "Shiraiwa/Objects/MapObjWanwan.h"
 #include "Shiraiwa/TestRollObj.h"
+#include "Shiraiwa/TestString.h"
 #include "Sato/GeographyObjMgr.h"
 
 #define GEO_OBJ_NEW(GeoClassName) \
@@ -123,8 +124,8 @@ GEO_OBJ_NEW(GeoVision);
 // GEO_OBJ_NEW_S(TSMAKamome);
 GEO_OBJ_NEW(TMapObjGeyser);
 GEO_OBJ_NEW(TMapObjGeyserSearch);
-// GEO_OBJ_NEW_S(TTestStrBarrel);
-// GEO_OBJ_NEW_S(TTestStrItem);
+GEO_OBJ_NEW_S(TTestStrBarrel);
+GEO_OBJ_NEW_S(TTestStrItem);
 // GEO_OBJ_NEW(TMapObjPeachTree);
 GEO_OBJ_NEW(TMapObjSnowRock);
 GEO_OBJ_NEW(TTestRollObj);
@@ -203,7 +204,7 @@ GEO_OBJ_NEW(GeoItemGen);
 // GEO_OBJ_NEW(TSMAButterflyGen);
 // GEO_OBJ_NEW(TSMADonkyBirdGen);
 // GEO_OBJ_NEW(TSMABoidBirdManager);
-// GEO_OBJ_NEW(TTestString);
+GEO_OBJ_NEW(TTestString);
 GEO_OBJ_NEW_S(TBalloonString);
 GEO_OBJ_NEW(TLensFlare);
 // GEO_OBJ_NEW(TDistSnow);
@@ -226,3 +227,8 @@ EX_GEO_OBJ_NEW(GeoJumpNarrow);
 
 #pragma endregion
 // GeoObj Definitions
+
+void GeographyObjManager::getKartCollidePosRadius(JGeometry::TVec3f &kartCollidePos, f32 &kartCollideRadius, int p3) {
+    kartCollidePos = mKartCollidePos[p3];
+    kartCollideRadius = mKartCollideRadius[p3];
+}
