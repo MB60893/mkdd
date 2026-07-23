@@ -51,6 +51,7 @@
 #include "Shiraiwa/Objects/MapObjHeyho.h"
 #include "Shiraiwa/Objects/MapObjIceBlock.h"
 #include "Shiraiwa/Objects/MapObjNoMove.h"
+#include "Shiraiwa/Objects/MapObjPeachTree.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
 #include "Shiraiwa/Objects/MapObjSnowMan.h"
@@ -134,7 +135,7 @@ GEO_OBJ_NEW(TMapObjGeyser);
 GEO_OBJ_NEW(TMapObjGeyserSearch);
 GEO_OBJ_NEW_S(TTestStrBarrel);
 GEO_OBJ_NEW_S(TTestStrItem);
-// GEO_OBJ_NEW(TMapObjPeachTree);
+GEO_OBJ_NEW(TMapObjPeachTree);
 GEO_OBJ_NEW(TMapObjSnowRock);
 GEO_OBJ_NEW(TTestRollObj);
 GEO_OBJ_NEW(TMapObjFountain);
@@ -194,7 +195,7 @@ GEO_OBJ_NEW(TMapObjDemoFountain);
 // GEO_OBJ_NEW(TMapObjKpFireBar);
 // GEO_OBJ_NEW(TMapObjSwimNossie);
 // GEO_OBJ_NEW(TMapObjPtera);
-// GEO_OBJ_NEW(TMapObjPeachTree2);
+GEO_OBJ_NEW(TMapObjPeachTree2);
 // GEO_OBJ_NEW(TMapObjYoshiHeli);
 GEO_OBJ_NEW(TMapObjDesertTree);
 GEO_OBJ_NEW(TMapObjWluSearchLight);
