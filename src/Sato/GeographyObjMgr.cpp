@@ -49,6 +49,7 @@
 #include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/Objects/MapObjHeyho.h"
 #include "Shiraiwa/Objects/MapObjIceBlock.h"
+#include "Shiraiwa/Objects/MapObjNoMove.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
 #include "Shiraiwa/Objects/MapObjSnowMan.h"
@@ -141,7 +142,7 @@ GEO_OBJ_NEW_S(TMapObjSubHeyho);
 GEO_OBJ_NEW(TMapObjWlArrow);
 GEO_OBJ_NEW(TMapObjSnowMan);
 GEO_OBJ_NEW(TMapObjIceBlock);
-// GEO_OBJ_NEW(TMapObjNoMove);
+GEO_OBJ_NEW(TMapObjNoMove);
 GEO_OBJ_NEW(GeoKuribo);
 // GEO_OBJ_NEW(TMapObjSun);
 // GEO_OBJ_NEW(TMapObjBubble);
