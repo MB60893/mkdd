@@ -664,7 +664,7 @@ config.libs = [
         "mtx",
         [
             Object(Matching, "dolphin/mtx/mtx.c"),
-            Object(NonMatching, "dolphin/mtx/mtxvec.c"),
+            Object(Matching, "dolphin/mtx/mtxvec.c"),
             Object(NonMatching, "dolphin/mtx/mtx44.c"),
             Object(Matching, "dolphin/mtx/mtx44vec.c"),
             Object(Matching, "dolphin/mtx/vec.c"),
