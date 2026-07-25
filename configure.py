@@ -509,7 +509,7 @@ config.libs = [
     DolphinLib(
         "amcstubs",
         [
-            Object(NonMatching, "dolphin/amcstubs/AmcExi2Stubs.c")
+            Object(Matching, "dolphin/amcstubs/AmcExi2Stubs.c")
         ]        
     ),
     DolphinLib(
