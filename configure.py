@@ -381,12 +381,12 @@ config.libs = [
             Object(Matching, "Runtime/__mem.c"),
             Object(Matching, "Runtime/__va_arg.c"),
             Object(Matching, "Runtime/global_destructor_chain.c"),
-            Object(NonMatching, "Runtime/NMWException.cp"),
+            Object(Matching, "Runtime/NMWException.cp"),
             Object(Matching, "Runtime/CPlusLibPPC.cp"),
             Object(Matching, "Runtime/ptmf.c"),
             Object(Matching, "Runtime/runtime.c"),
             Object(Matching, "Runtime/__init_cpp_exceptions.cpp"),
-            Object(NonMatching, "Runtime/Gecko_ExceptionPPC.cp"),
+            Object(Matching, "Runtime/Gecko_ExceptionPPC.cp"),
             Object(Matching, "Runtime/GCN_mem_alloc.c"),
         ]
     ),
@@ -509,7 +509,7 @@ config.libs = [
     DolphinLib(
         "amcstubs",
         [
-            Object(NonMatching, "dolphin/amcstubs/AmcExi2Stubs.c")
+            Object(Matching, "dolphin/amcstubs/AmcExi2Stubs.c")
         ]        
     ),
     DolphinLib(
@@ -663,12 +663,12 @@ config.libs = [
     DolphinLib(
         "mtx",
         [
-            Object(NonMatching, "dolphin/mtx/mtx.c"),
-            Object(NonMatching, "dolphin/mtx/mtxvec.c"),
-            Object(NonMatching, "dolphin/mtx/mtx44.c"),
+            Object(Matching, "dolphin/mtx/mtx.c"),
+            Object(Matching, "dolphin/mtx/mtxvec.c"),
+            Object(Matching, "dolphin/mtx/mtx44.c"),
             Object(Matching, "dolphin/mtx/mtx44vec.c"),
             Object(Matching, "dolphin/mtx/vec.c"),
-            Object(NonMatching, "dolphin/mtx/quat.c"),
+            Object(Matching, "dolphin/mtx/quat.c"),
         ]
     ),
     DolphinLib(
@@ -1230,7 +1230,7 @@ config.libs = [
         [],
         [
             Object(Matching, "Osako/clock.cpp"),
-            Object(NonMatching, "Osako/animator.cpp"),
+            Object(Matching, "Osako/animator.cpp"),
             Object(Matching, "Osako/testApp.cpp"),
             Object(Matching, "Osako/shadowModel.cpp"),
             Object(Matching, "Osako/GameApp.cpp"),
