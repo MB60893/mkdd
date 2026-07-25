@@ -386,7 +386,7 @@ config.libs = [
             Object(Matching, "Runtime/ptmf.c"),
             Object(Matching, "Runtime/runtime.c"),
             Object(Matching, "Runtime/__init_cpp_exceptions.cpp"),
-            Object(NonMatching, "Runtime/Gecko_ExceptionPPC.cp"),
+            Object(Matching, "Runtime/Gecko_ExceptionPPC.cp"),
             Object(Matching, "Runtime/GCN_mem_alloc.c"),
         ]
     ),
