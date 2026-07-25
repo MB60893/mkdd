@@ -1230,7 +1230,7 @@ config.libs = [
         [],
         [
             Object(Matching, "Osako/clock.cpp"),
-            Object(NonMatching, "Osako/animator.cpp"),
+            Object(Matching, "Osako/animator.cpp"),
             Object(Matching, "Osako/testApp.cpp"),
             Object(Matching, "Osako/shadowModel.cpp"),
             Object(Matching, "Osako/GameApp.cpp"),
