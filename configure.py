@@ -381,7 +381,7 @@ config.libs = [
             Object(Matching, "Runtime/__mem.c"),
             Object(Matching, "Runtime/__va_arg.c"),
             Object(Matching, "Runtime/global_destructor_chain.c"),
-            Object(NonMatching, "Runtime/NMWException.cp"),
+            Object(Matching, "Runtime/NMWException.cp"),
             Object(Matching, "Runtime/CPlusLibPPC.cp"),
             Object(Matching, "Runtime/ptmf.c"),
             Object(Matching, "Runtime/runtime.c"),
