@@ -663,7 +663,7 @@ config.libs = [
     DolphinLib(
         "mtx",
         [
-            Object(NonMatching, "dolphin/mtx/mtx.c"),
+            Object(Matching, "dolphin/mtx/mtx.c"),
             Object(NonMatching, "dolphin/mtx/mtxvec.c"),
             Object(NonMatching, "dolphin/mtx/mtx44.c"),
             Object(Matching, "dolphin/mtx/mtx44vec.c"),
