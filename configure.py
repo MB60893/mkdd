@@ -1111,7 +1111,7 @@ config.libs = [
             Object(NonMatching, "Kameda/CharacterSelect3D.cpp"),
             Object(NonMatching, "Kameda/SceneCourseSelect.cpp"),
             Object(NonMatching, "Kameda/SceneGhostLoadSave.cpp"),
-            Object(NonMatching, "Kameda/PrintWindow.cpp"),
+            Object(Matching, "Kameda/PrintWindow.cpp"),
             Object(NonMatching, "Kameda/CourseName2D.cpp"),
             Object(NonMatching, "Kameda/SceneLanEntry.cpp"),
             Object(NonMatching, "Kameda/SceneMapSelect.cpp"),
