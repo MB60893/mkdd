@@ -20,7 +20,7 @@ void Main::bootDSP() {
 }
 
 bool Main::isActive() {
-    return _48[0] & 0x10;
+    return mState & 0x10;
 }
 
 void Main::initRaceSound() {}
