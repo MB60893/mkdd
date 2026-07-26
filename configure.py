@@ -1087,7 +1087,7 @@ config.libs = [
             Object(NonMatching, "Kameda/Pause2D.cpp"),
             Object(Matching, "Kameda/WipeManager.cpp"),
             Object(NonMatching, "Kameda/Fade.cpp"),
-            Object(NonMatching, "Kameda/K2DPicture.cpp"),
+            Object(Matching, "Kameda/K2DPicture.cpp"),
             Object(Matching, "Kameda/Scene.cpp"),
             Object(Matching, "Kameda/SceneApp.cpp"),
             Object(NonMatching, "Kameda/SceneTitle.cpp"),
