@@ -46,6 +46,7 @@ public:
     ExGeographyObj *search_boundSp(const JGeometry::TVec3f &pos, f32);
 
     GeographyObj *createSubObj(u32 id);
+    GeographyObj *createGenSubObj(u32 id);
     GeographyObj *createPrevDrawSubObj(u32 id);
 
     f32 getKartHitDepthNormalObj(int kart_index) const { return mKartHitDepth[kart_index]; }

@@ -51,6 +51,7 @@
 #include "Shiraiwa/Objects/MapObjHeyho.h"
 #include "Shiraiwa/Objects/MapObjIceBlock.h"
 #include "Shiraiwa/Objects/MapObjNoMove.h"
+#include "Shiraiwa/Objects/MapObjNossie.h"
 #include "Shiraiwa/Objects/MapObjPeachTree.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
@@ -164,7 +165,7 @@ GEO_OBJ_NEW(TMapObjPool);
 // GEO_OBJ_NEW_S(TMapObjSanboBody);
 // GEO_OBJ_NEW(TMapObjRollTable);
 // GEO_OBJ_NEW(TMapObjMoveItemBox);
-// GEO_OBJ_NEW(TMapObjNossie);
+GEO_OBJ_NEW(TMapObjNossie);
 // GEO_OBJ_NEW(TMapObjMareA);
 // GEO_OBJ_NEW(TMapObjMareB);
 // GEO_OBJ_NEW(TMapObjMareC);
@@ -193,8 +194,8 @@ GEO_OBJ_NEW(TMapObjDinoTree);
 GEO_OBJ_NEW(TMapObjDemoFountain);
 // GEO_OBJ_NEW(TMapObjKpGear);
 // GEO_OBJ_NEW(TMapObjKpFireBar);
-// GEO_OBJ_NEW(TMapObjSwimNossie);
-// GEO_OBJ_NEW(TMapObjPtera);
+GEO_OBJ_NEW(TMapObjSwimNossie);
+GEO_OBJ_NEW(TMapObjPtera);
 GEO_OBJ_NEW(TMapObjPeachTree2);
 // GEO_OBJ_NEW(TMapObjYoshiHeli);
 GEO_OBJ_NEW(TMapObjDesertTree);
@@ -219,10 +220,10 @@ GEO_OBJ_NEW(TLensFlare);
 // GEO_OBJ_NEW(TDistSnow);
 GEO_OBJ_NEW_S(TBalloonManager);
 GEO_OBJ_NEW(GeoAirJet);
-// GEO_OBJ_NEW_S(TMapObjNossieColHead);
-// GEO_OBJ_NEW_S(TMapObjNossieColFootFront);
-// GEO_OBJ_NEW_S(TMapObjNossieColFootRear);
-// GEO_OBJ_NEW(TMapObjNossieColBody);
+GEO_OBJ_NEW_S(TMapObjNossieColHead);
+GEO_OBJ_NEW_S(TMapObjNossieColFootFront);
+GEO_OBJ_NEW_S(TMapObjNossieColFootRear);
+GEO_OBJ_NEW_S(TMapObjNossieColBody);
 GEO_OBJ_NEW(GeoSplash);
 GEO_OBJ_NEW(GeoTideSensor);
 GEO_OBJ_NEW(GeoPuller);
