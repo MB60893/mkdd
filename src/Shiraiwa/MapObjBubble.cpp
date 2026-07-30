@@ -11,6 +11,7 @@
 #include "Sato/StateObserver.h"
 #include "Shiraiwa/SiUtil.h"
 #include "dolphin/mtx.h"
+#include "mathHelper.h"
 
 StateObserver::StateFuncSet<TMapObjBubble> TMapObjBubble::sTable[4] = {
     { 0, &TMapObjBubble::initFunc_Start, &TMapObjBubble::doFunc_Start },

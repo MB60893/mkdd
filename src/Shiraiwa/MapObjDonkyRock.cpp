@@ -16,8 +16,8 @@
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
 #include "Shiraiwa/Objects/MapObjHioNode.h"
 #include "dolphin/mtx.h"
+#include "mathHelper.h"
 #include "types.h"
-#include <float.h>
 
 StateObserver::StateFuncSet<TMapObjDonkyRock> TMapObjDonkyRock::sTable[3] = {
     { 0, &TMapObjDonkyRock::initFunc_Wait, &TMapObjDonkyRock::doFunc_Wait },

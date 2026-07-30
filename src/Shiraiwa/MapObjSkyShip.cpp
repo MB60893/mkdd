@@ -371,10 +371,8 @@ void TMapObjUFO::doFunc_Fly() {
     getSoundMgr()->setSe(0x40080);
 }
 
-// FIX: Something strange about function order. Call is structured the same as other
-//      functions, so why is it not matching?
 void TMapObjUFO::initFunc_Wait() {
-    if (RCMGetCourse()->getCrsData()->getPointData(mObjData->mPathID, mPathUtil->getPointIndex())->linkPoint == 0) {
+    if (RCMGetCourse()->getCrsData()->getPointData(mObjData->mPathID, mPathUtil->mPointIndex)->linkPoint == 0) {
         setState(0);
     }
 }

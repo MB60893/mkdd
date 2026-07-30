@@ -12,10 +12,11 @@
 #include "Sato/ObjUtility.h"
 #include "Sato/StateObserver.h"
 #include "Shiraiwa/AnmPlayer.h"
+#include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/SiUtil.h"
 #include "dolphin/mtx.h"
+#include "mathHelper.h"
 #include "types.h"
-#include "Shiraiwa/Objects/MapObjGeyser.h"
 
 s16 TMapObjGeyser::sActTime = 120;
 s16 TMapObjGeyser::sEfctEFEndFrame = sActTime - 25;
@@ -247,7 +248,7 @@ void TMapObjGeyser::reset() {
         _190 = 300;
     }
 
-    _194 = (mObjData->mParam4 ^ 0x80000000) * 182.04445f;
+    _194 = mObjData->mParam4 * 182.04445f;
     _198 = mScale.y * 1000.0f;
     _19c = 0;
 

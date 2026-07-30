@@ -1,4 +1,3 @@
-//#include "JSystem/JAudio/JASFakeMatch4.h"
 #include "JSystem/JGeometry/Vec.h"
 #include "JSystem/JUtility/JUTAssert.h"
 #include "Kaneshige/RaceMgr.h"
@@ -7,11 +6,11 @@
 #include "Sato/ObjUtility.h"
 #include "Sato/StateObserver.h"
 #include "Shiraiwa/Coord3D.h"
+#include "Shiraiwa/Objects/MapObjDossun.h"
 #include "Shiraiwa/Objects/MapObjHioNode.h"
 #include "Yamamoto/kartCtrl.h"
 #include "types.h"
-#include "Shiraiwa/Objects/MapObjDossun.h"
-
+#include "mathHelper.h"
 
 StateObserver::StateFuncSet<TMapObjDossun> TMapObjDossun::sTable[6] = {
     { 0, &TMapObjDossun::initFunc_Bottom, &TMapObjDossun::doFunc_Bottom },

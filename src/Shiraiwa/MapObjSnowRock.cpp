@@ -12,6 +12,7 @@
 #include "Shiraiwa/SiUtil.h"
 #include "Yamamoto/kartCtrl.h"
 #include "types.h"
+#include "mathHelper.h"
 
 StateObserver::StateFuncSet<TMapObjSnowRock> TMapObjSnowRock::sTable[3] = {
     0, &TMapObjSnowRock::initFunc_Break, &TMapObjSnowRock::doFunc_Break,

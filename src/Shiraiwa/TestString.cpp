@@ -21,6 +21,7 @@
 #include "dolphin/gx/GXTransform.h"
 #include "dolphin/gx/GXVert.h"
 #include "dolphin/mtx.h"
+#include "mathHelper.h"
 #include "types.h"
 
 f32 TTestStrBarrel::sItemVelScale = 0.6f;
