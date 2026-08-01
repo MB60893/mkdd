@@ -1117,7 +1117,7 @@ config.libs = [
             Object(NonMatching, "Kameda/SceneMapSelect.cpp"),
             Object(Matching, "Kameda/BattleName2D.cpp"),
             Object(NonMatching, "Kameda/LapGhost2D.cpp"),
-            Object(NonMatching, "Kameda/CanNotSaveG2D.cpp"),
+            Object(Matching, "Kameda/CanNotSaveG2D.cpp"),
             Object(NonMatching, "Kameda/LANResult2D.cpp"),
             Object(NonMatching, "Kameda/LANNum2D.cpp"),
             Object(NonMatching, "Kameda/Cup2D.cpp"),
