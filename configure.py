@@ -1112,15 +1112,15 @@ config.libs = [
             Object(NonMatching, "Kameda/SceneCourseSelect.cpp"),
             Object(NonMatching, "Kameda/SceneGhostLoadSave.cpp"),
             Object(Matching, "Kameda/PrintWindow.cpp"),
-            Object(NonMatching, "Kameda/CourseName2D.cpp"),
+            Object(Matching, "Kameda/CourseName2D.cpp"),
             Object(NonMatching, "Kameda/SceneLanEntry.cpp"),
             Object(NonMatching, "Kameda/SceneMapSelect.cpp"),
             Object(Matching, "Kameda/BattleName2D.cpp"),
             Object(NonMatching, "Kameda/LapGhost2D.cpp"),
-            Object(NonMatching, "Kameda/CanNotSaveG2D.cpp"),
+            Object(Matching, "Kameda/CanNotSaveG2D.cpp"),
             Object(NonMatching, "Kameda/LANResult2D.cpp"),
             Object(NonMatching, "Kameda/LANNum2D.cpp"),
-            Object(NonMatching, "Kameda/Cup2D.cpp"),
+            Object(Matching, "Kameda/Cup2D.cpp"),
             Object(NonMatching, "Kameda/BombStart2D.cpp")
         ]
     ),
