@@ -19,10 +19,10 @@ BombStart2D::BombStart2D(JKRHeap *heap)
     {
     case 1:
 #line 42
-        JUT_ASSERT_MSG(!&"NO DATA!!", "!\"NO DATA!!\"");
+        JUT_ASSERT(!"NO DATA!!");
         break;
     case 2:
-        mScreen->J2DScreen::set("BombStart2P.blo", 0x40000, J2DManager::getManager()->getArchive());
+        mScreen->set("BombStart2P.blo", 0x40000, J2DManager::getManager()->getArchive());
 
         mTransform = (J2DAnmTransform *)J2DAnmLoaderDataBase::load(
             JKRFileLoader::getGlbResource("BombStart2P.bck",
@@ -43,7 +43,7 @@ BombStart2D::BombStart2D(JKRHeap *heap)
         break;
     case 3:
     case 4:
-        mScreen->J2DScreen::set("BombStart4P.blo", 0x40000, J2DManager::getManager()->getArchive());
+        mScreen->set("BombStart4P.blo", 0x40000, J2DManager::getManager()->getArchive());
 
         mTransform = (J2DAnmTransform *)J2DAnmLoaderDataBase::load(
             JKRFileLoader::getGlbResource("BombStart4P.bck",

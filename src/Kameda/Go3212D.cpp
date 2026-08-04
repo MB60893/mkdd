@@ -11,6 +11,11 @@
 #include "kartEnums.h"
 #include "mathHelper.h"  // For unused data
 
+Go3212DParam::Go3212DParam() {
+    mUnknown = 0;
+    mFlag = true;
+}
+
 Go3212D::Go3212D(JKRHeap *heap)
 {
     mHioNode = new (heap, 0) Go3212DHioNode();
@@ -18,7 +23,7 @@ Go3212D::Go3212D(JKRHeap *heap)
     mGrafContext = System::getJ2DOrtho();
 
     mScreen = new (heap, 0) J2DScreen();
-    mScreen->J2DScreen::set("go321.blo", 0x40000, J2DManager::getManager()->getArchive());
+    mScreen->set("go321.blo", 0x40000, J2DManager::getManager()->getArchive());
 
     mTransform = (J2DAnmTransform *)J2DAnmLoaderDataBase::load(
         JKRFileLoader::getGlbResource("go321.bck", J2DManager::getManager()->getArchive()));
@@ -32,8 +37,6 @@ Go3212D::Go3212D(JKRHeap *heap)
     init();
 }
 
-Go3212DParam::~Go3212DParam() {}
-
 void Go3212D::init()
 {
     mTransformFrame = 0.0f;
@@ -41,7 +44,9 @@ void Go3212D::init()
     mIsStart = false;
 }
 
-Go3212DHioNode::~Go3212DHioNode() {}
+Go3212D::~Go3212D() {
+    delete mHioNode;
+}
 
 void Go3212D::draw()
 {
@@ -77,8 +82,8 @@ void Go3212D::calc()
             }
         }
 
-        mTransform->mCurrentFrame = mTransformFrame++;
-        mTexPattern->mCurrentFrame = mTexPatternFrame++;
+        mTransform->setFrame(mTransformFrame++);
+        mTexPattern->setFrame(mTexPatternFrame++);
 
         mScreen->animation();
     }

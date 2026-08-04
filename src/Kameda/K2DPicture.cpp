@@ -11,12 +11,10 @@
 #include "dolphin/mtx.h"
 
 static const f32 sZeroDegreeAngle = 0.f;
-static const f32 sDegToRad = 0.017453292f;
 
 u8 K2DPicture::mK2DGlobalAlpha = 0xFF;
-u8 K2DPicture::mDummy[4] = {0, 0, 0, 0};
 
-void K2DPicture::drawK2D(float x0, float y0, float x1, float y1, bool tevMode) {
+void K2DPicture::drawK2D(f32 x0, f32 y0, f32 x1, f32 y1, bool tevMode) {
 
     if(!mPicture.mIsVisible)
     {
@@ -78,25 +76,10 @@ void K2DPicture::drawK2D(float x0, float y0, float x1, float y1, bool tevMode) {
 }
 
 void K2DPicture::getNewColor(JUTColor colors[4]) {
-    colors[0].r = mPicture.mCornerColors[0].r;
-    colors[0].g = mPicture.mCornerColors[0].g;
-    colors[0].b = mPicture.mCornerColors[0].b;
-    colors[0].a = mPicture.mCornerColors[0].a;
-
-    colors[1].r = mPicture.mCornerColors[1].r;
-    colors[1].g = mPicture.mCornerColors[1].g;
-    colors[1].b = mPicture.mCornerColors[1].b;
-    colors[1].a = mPicture.mCornerColors[1].a;
-
-    colors[2].r = mPicture.mCornerColors[2].r;
-    colors[2].g = mPicture.mCornerColors[2].g;
-    colors[2].b = mPicture.mCornerColors[2].b;
-    colors[2].a = mPicture.mCornerColors[2].a;
-
-    colors[3].r = mPicture.mCornerColors[3].r;
-    colors[3].g = mPicture.mCornerColors[3].g;
-    colors[3].b = mPicture.mCornerColors[3].b;
-    colors[3].a = mPicture.mCornerColors[3].a;
+    colors[0] = mPicture.mCornerColors[0];
+    colors[1] = mPicture.mCornerColors[1];
+    colors[2] = mPicture.mCornerColors[2];
+    colors[3] = mPicture.mCornerColors[3];
 
     if(mPicture.mColorAlpha != 0xFF)
     {
@@ -220,7 +203,7 @@ void K2DPicture::makeMatrix(f32 x, f32 y) {
             degree = mPicture.mAngleZ;
         }
 
-        PSMTXRotRad(rotationMatrix, mPicture.mRotationAxis, degree * sDegToRad);
+        PSMTXRotRad(rotationMatrix, mPicture.mRotationAxis, MTXDegToRad(degree));
 
         PSMTXTrans(originToPosMatrix, mPicture.mAnchorPoint.x + x, mPicture.mAnchorPoint.y + y, sZeroDegreeAngle);
 

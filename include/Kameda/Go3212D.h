@@ -9,8 +9,8 @@
 class Go3212DParam : public JORReflexible
 {
 public:
-    Go3212DParam() : mUnknown(0), mFlag(true) {}
-    virtual ~Go3212DParam();
+    Go3212DParam();
+    virtual ~Go3212DParam() {}
 
     u16 mUnknown;
     bool mFlag;
@@ -20,7 +20,7 @@ class Go3212DHioNode : public HioNode
 {
 public:
     Go3212DHioNode() : HioNode("Ｇｏ３２１２Ｄ", &mParam, 0, 0) {}
-    virtual ~Go3212DHioNode();
+    virtual ~Go3212DHioNode() {}
 
     Go3212DParam mParam;
 };
@@ -29,6 +29,7 @@ class Go3212D
 {
 public:
     Go3212D(JKRHeap *heap);  // 0x80183460
+    ~Go3212D();              // UNUSED
 
     void init();  // 0x801835f8
     void draw();  // 0x80183680

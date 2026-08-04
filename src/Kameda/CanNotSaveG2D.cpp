@@ -14,7 +14,7 @@ CanNotSaveG2D::CanNotSaveG2D(JKRHeap *heap)
     mGrafContext = System::getJ2DOrtho();
 
     mScreen = new (heap, 0) J2DScreen();
-    mScreen->J2DScreen::set("CanNotSaveG.blo", 0x40000, J2DManager::getManager()->getArchive());
+    mScreen->set("CanNotSaveG.blo", 0x40000, J2DManager::getManager()->getArchive());
 
     mTransform = (J2DAnmTransform *)J2DAnmLoaderDataBase::load(
         JKRFileLoader::getGlbResource("CanNotSaveG.bck", J2DManager::getManager()->getArchive()));

@@ -9,8 +9,8 @@
 class Go2DParam : public JORReflexible
 {
 public:
-    Go2DParam() : mUnknown(0), mFlag(true) {}
-    virtual ~Go2DParam();
+    Go2DParam();
+    virtual ~Go2DParam() {}
 
     u16 mUnknown;
     bool mFlag;
@@ -20,7 +20,7 @@ class Go2DHioNode : public HioNode
 {
 public:
     Go2DHioNode() : HioNode("Ｇｏ２Ｄ", &mParam, 0, 0) {}
-    virtual ~Go2DHioNode();
+    virtual ~Go2DHioNode() {}
 
     Go2DParam mParam;
 };
@@ -29,6 +29,7 @@ class Go2D
 {
 public:
     Go2D(JKRHeap *heap);  // 0x8016ea58
+    ~Go2D();              // UNUSED
 
     void init();  // 0x8016ebec
     void draw();  // 0x8016ecac

@@ -8,6 +8,11 @@
 #include "Kaneshige/RaceMgr.h"
 #include "Osako/system.h"
 
+Go2DParam::Go2DParam() {
+    mUnknown = 0;
+    mFlag = true;
+}
+
 Go2D::Go2D(JKRHeap *heap)
 {
     mHioNode = new (heap, 0) Go2DHioNode();
@@ -15,7 +20,7 @@ Go2D::Go2D(JKRHeap *heap)
     mGrafContext = System::getJ2DOrtho();
 
     mScreen = new (heap, 0) J2DScreen();
-    mScreen->J2DScreen::set("go.blo", 0x40000, J2DManager::getManager()->getArchive());
+    mScreen->set("go.blo", 0x40000, J2DManager::getManager()->getArchive());
 
     mTransform = (J2DAnmTransform *)J2DAnmLoaderDataBase::load(
         JKRFileLoader::getGlbResource("go.bck", J2DManager::getManager()->getArchive()));
@@ -28,8 +33,6 @@ Go2D::Go2D(JKRHeap *heap)
 
     init();
 }
-
-Go2DParam::~Go2DParam() {}
 
 void Go2D::init()
 {
@@ -44,7 +47,9 @@ void Go2D::init()
     mScreen->animation();
 }
 
-Go2DHioNode::~Go2DHioNode() {}
+Go2D::~Go2D() {
+    delete mHioNode;
+}
 
 void Go2D::draw()
 {

@@ -8,7 +8,6 @@
 class K2DPicture {
 public:
     static u8 mK2DGlobalAlpha; // 0x804145a8
-    static u8 mDummy[4]; // Needed to reach 100% sdata
 
     void drawK2D(f32 x0, f32 y0, f32 x1, f32 y1, bool tevMode); // 0x8013b9e8
     void setTevModeK2D(); // 0x8013bd34
