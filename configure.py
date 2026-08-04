@@ -1107,7 +1107,7 @@ config.libs = [
             Object(NonMatching, "Kameda/Mario.cpp"),
             Object(NonMatching, "Kameda/SceneMenu.cpp"),
             Object(Matching, "Kameda/Demo2D.cpp"),
-            Object(NonMatching, "Kameda/Go3212D.cpp"),
+            Object(Matching, "Kameda/Go3212D.cpp"),
             Object(NonMatching, "Kameda/CharacterSelect3D.cpp"),
             Object(NonMatching, "Kameda/SceneCourseSelect.cpp"),
             Object(NonMatching, "Kameda/SceneGhostLoadSave.cpp"),
