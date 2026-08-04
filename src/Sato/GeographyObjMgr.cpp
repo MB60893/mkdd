@@ -39,7 +39,6 @@
 #include "Shiraiwa/JugemMain.h"
 #include "Shiraiwa/JugemRodItem.h"
 #include "Shiraiwa/LensFlare.h"
-//#include "Shiraiwa/MapObjPoihana.h"
 #include "Shiraiwa/Objects/MapObjAward.h"
 #include "Shiraiwa/Objects/MapObjBubble.h"
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
@@ -53,6 +52,7 @@
 #include "Shiraiwa/Objects/MapObjNoMove.h"
 #include "Shiraiwa/Objects/MapObjNossie.h"
 #include "Shiraiwa/Objects/MapObjPeachTree.h"
+#include "Shiraiwa/Objects/MapObjPoihana.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
 #include "Shiraiwa/Objects/MapObjSkyShip.h"
 #include "Shiraiwa/Objects/MapObjSnowMan.h"
@@ -127,7 +127,7 @@ GEO_OBJ_NEW_S(GeoWaterUp2);
 GEO_OBJ_NEW(GeoWater);
 // GEO_OBJ_NEW(TMapObjFireBar);
 GEO_OBJ_NEW(GeoVision);
-// GEO_OBJ_NEW(TMapObjPoihana);
+GEO_OBJ_NEW(TMapObjPoihana);
 // GEO_OBJ_NEW(TMapObjWall);
 // GEO_OBJ_NEW_S(TSMAButterfly);
 // GEO_OBJ_NEW_S(TSMADonkyBird);
