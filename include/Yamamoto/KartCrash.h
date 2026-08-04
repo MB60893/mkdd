@@ -40,7 +40,7 @@ public:
     void MakeFreezeCrash();        // 0x80309e9c
     void DoFreezeCrashCrl();       // 0x80309fec
     // Inline/Unused
-    // void MakeRollCrash();
+    void MakeRollCrash();
 private:
     KartBody* mBody;
     TKartThrower* _4;
