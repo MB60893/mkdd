@@ -47,7 +47,7 @@ hatch should a genuinely reversed unit ever turn up.
 
 Usage (run from repo root directory):
   python tools/validate-symbol-order.py -u main/Yamamoto/kartBody
-  python tools/validate-symbol-order.py -u main/Sato/GeographyObjMgr --map orig/MarioClub_us/files/debugInfoS.MAP
+  python tools/validate-symbol-order.py -u main/Sato/GeographyObjMgr --map orig/MarioClub_us/files/debugInfoM.MAP
   python tools/validate-symbol-order.py -u main/Shiraiwa/MapObjDossun --map orig/MarioClub_us/files/debugInfoM.MAP -v
 """
 
@@ -62,7 +62,7 @@ from typing import Dict, List, Optional, Tuple
 script_dir = os.path.dirname(os.path.realpath(__file__))
 root_dir = os.path.abspath(os.path.join(script_dir, ".."))
 
-DEFAULT_MAP = os.path.join(root_dir, "orig", "MarioClub_us", "files", "debugInfoS.MAP")
+DEFAULT_MAP = os.path.join(root_dir, "orig", "MarioClub_us", "files", "debugInfoM.MAP")
 NM = os.environ.get("NM", os.path.join(root_dir, "build", "binutils", "powerpc-eabi-nm.exe"))
 OBJDIFF_JSON = os.path.join(root_dir, "objdiff.json")
 
