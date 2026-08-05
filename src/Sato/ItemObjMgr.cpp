@@ -192,6 +192,8 @@ void ItemObjMgr::createShuffleMgr()
     }
 }
 
+ItemShuffleMgr::~ItemShuffleMgr() {}
+
 void ItemObjMgr::reset()
 {
     resetLists();
