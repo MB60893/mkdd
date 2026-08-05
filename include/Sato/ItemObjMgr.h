@@ -102,7 +102,7 @@ public:
     int calcRndSpecialSlot(int, const ItemShuffleMgr::KartSlotData &, bool);
     int calcRndSpecialRank(ItemShuffleMgr::KartSlotRankDataSet);
 
-    virtual ~ItemShuffleMgr();                                                     // 08
+    virtual ~ItemShuffleMgr() {}                                                   // 08
     virtual void calcRaceUseNormalItem(u32 *, KartSlotRankDataSet *, int);         // 0C
     virtual void calcSpecialItemNum(u32 *, KartSlotRankDataSet *, int, int, bool); // 10
     virtual int calcRank(KartSlotRankDataSet);                                     // 14
