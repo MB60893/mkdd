@@ -145,6 +145,34 @@ void KartCrash::NonRescue() {
     }
 }
 
+void KartCrash::MakeRollCrash() {
+    // UNUSED, size somehow matches lol
+    // Needed for the 180.0f, this probably wasn't what was originally written
+    // There's no way of knowing what this actually did
+    KartBody* body = mBody;
+    u32 num = body->mMynum;
+
+    if (body->getChecker()->CheckCrash() == false) {
+        body->getGame()->DoRollThrow();
+        body->_584 = 5;
+        body->_588 = 0;
+        body->_4b8 = (body->mVel.dot(body->_308) / 180.0f);
+        body->_594 = 0;
+
+        NonRescue();
+        body->mCarStatus |= 0x300000;
+        SaveDir();
+        body->getGame()->MakeClear();
+        body->getDamage()->SetDamageAnime();
+        body->getItem()->FallItem();
+        GetKartCtrl()->getKartSound(num)->DoRollCrashStartSound();
+        body->getStrat()->DoMotor(MotorManager::MotorType_10);
+        GetKartCtrl()->getKartSound(body->mMynum)->DoRollCrashVoice();
+        JPEffectPerformer::setEffect(JPEffectPerformer::Effect_Unknown0, num, body->mPos, 1);
+        SetMatchlessTimer();
+    }
+}
+
 void KartCrash::DoRollCrashCrl() {
     KartBody* body = mBody;
     GetKartCtrl()->getKartSound(body->mMynum)->DoRollCrashSound();
@@ -413,9 +441,9 @@ void KartCrash::MakeSpin(ItemObj *itemObj) {
                 body->_4a8 = 0.0174444f;
             }
         } else if (body->mTireAngle < 0.0f) {
-            body->_4a8 = 0.0174444f;
-        } else {
             body->_4a8 = -0.0174444f;
+        } else {
+            body->_4a8 = 0.0174444f;
         }
         body->_4b0 = body->_4ac = 0.0f;
         body->_584 = 1;
@@ -448,7 +476,7 @@ void KartCrash::DoSpinCrashCrl() {
             if (cnvge_4ac > 10.0f) {
                 body->_4b0 = GetKartCtrl()->fcnvge(body->_4b0, 0.0697777f, 0.00348888f, 0.00348888f);
             } else {
-                body->_4b0 = GetKartCtrl()->fcnvge(body->_4b0, 0.33f, 0.0174444f, 0.0174444f);
+                body->_4b0 = GetKartCtrl()->fcnvge(body->_4b0, 0.174444f, 0.0174444f, 0.0174444f);
             }
             cnvge_4ac = GetKartCtrl()->fcnvge(cnvge_4ac, 12.56f, body->_4b0, body->_4b0);
             if (body->_4a8 < 0.0f) {
@@ -554,7 +582,6 @@ void KartCrash::MakeThunderSpin() {
     }
 }
 
-//https://decomp.me/scratch/ynjMy
 void KartCrash::MakeBurn(ItemObj *itemObj) {
     KartBody* body = mBody;
     u32 num = body->mMynum;
@@ -569,7 +596,7 @@ void KartCrash::MakeBurn(ItemObj *itemObj) {
             GetKartCtrl()->getKartSound(body->mMynum)->DoHitFireBall();
             ItemFireBall* fireBall = (ItemFireBall*)mgr->getItemFireBall(fireBallObj);
 
-            JPEffectPerformer::setEffect(JPEffectPerformer::Effect_Fireball, num, stack_8, (u8)(!fireBall->IsEfctTypeRed()));
+            JPEffectPerformer::setEffect(JPEffectPerformer::Effect_Fireball, num, stack_8, (!fireBall->IsEfctTypeRed() ? (u8)1 : (u8)0)); // TODO: perhaps these are some constants
         }
         MakeSpin(nullptr);
         body->getDamage()->mFlags |= 0x80;

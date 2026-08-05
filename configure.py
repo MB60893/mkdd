@@ -1087,7 +1087,7 @@ config.libs = [
             Object(NonMatching, "Kameda/Pause2D.cpp"),
             Object(Matching, "Kameda/WipeManager.cpp"),
             Object(NonMatching, "Kameda/Fade.cpp"),
-            Object(NonMatching, "Kameda/K2DPicture.cpp"),
+            Object(Matching, "Kameda/K2DPicture.cpp"),
             Object(Matching, "Kameda/Scene.cpp"),
             Object(Matching, "Kameda/SceneApp.cpp"),
             Object(NonMatching, "Kameda/SceneTitle.cpp"),
@@ -1103,11 +1103,11 @@ config.libs = [
             Object(NonMatching, "Kameda/PrintProgressive.cpp"),
             Object(NonMatching, "Kameda/PrintMemoryCard.cpp"),
             Object(NonMatching, "Kameda/PreRace2D.cpp"),
-            Object(NonMatching, "Kameda/Go2D.cpp"),
+            Object(Matching, "Kameda/Go2D.cpp"),
             Object(NonMatching, "Kameda/Mario.cpp"),
             Object(NonMatching, "Kameda/SceneMenu.cpp"),
             Object(Matching, "Kameda/Demo2D.cpp"),
-            Object(NonMatching, "Kameda/Go3212D.cpp"),
+            Object(Matching, "Kameda/Go3212D.cpp"),
             Object(NonMatching, "Kameda/CharacterSelect3D.cpp"),
             Object(NonMatching, "Kameda/SceneCourseSelect.cpp"),
             Object(NonMatching, "Kameda/SceneGhostLoadSave.cpp"),
@@ -1121,7 +1121,7 @@ config.libs = [
             Object(NonMatching, "Kameda/LANResult2D.cpp"),
             Object(NonMatching, "Kameda/LANNum2D.cpp"),
             Object(Matching, "Kameda/Cup2D.cpp"),
-            Object(NonMatching, "Kameda/BombStart2D.cpp")
+            Object(Matching, "Kameda/BombStart2D.cpp")
         ]
     ),
     GameLib(
@@ -1455,7 +1455,7 @@ config.libs = [
             Object(Matching, "Yamamoto/KartStar.cpp"),
             Object(Matching, "Yamamoto/KartTire.cpp"),
             Object(Matching, "Yamamoto/KartThunder.cpp"),
-            Object(NonMatching, "Yamamoto/KartCrash.cpp"),
+            Object(Matching, "Yamamoto/KartCrash.cpp"),
             Object(NonMatching, "Yamamoto/KartDemoCam.cpp"),
             Object(NonMatching, "Yamamoto/KartFitParam.cpp"),
             Object(Matching, "Yamamoto/KartDisp.cpp"),
