@@ -13,16 +13,6 @@ TMapObjNoMove::TMapObjNoMove(const CrsData::SObject &sObject) : GeographyObj(sOb
     setObjFlagSimpleDraw();
 }
 
-
-
-void TMapObjNoMove::reset() {
-    GeographyObj::resetObject();
-    clrObjFlagCheckGeoHitting();
-    clrObjFlagCheckItemHitting();
-    clrAllCheckKartHitFlag();
-}
-
-
 const char *TMapObjNoMove::getBmdFileName() {
     for (int i = 0; i < 4; i++) {
         if (mObjData->objID == sObjList[i]._0) {
@@ -31,5 +21,12 @@ const char *TMapObjNoMove::getBmdFileName() {
     }
     return NULL;
 };  
+
+void TMapObjNoMove::reset() {
+    GeographyObj::resetObject();
+    clrObjFlagCheckGeoHitting();
+    clrObjFlagCheckItemHitting();
+    clrAllCheckKartHitFlag();
+}
 
 #include "JSystem/JAudio/JASFakeMatch2.h"
