@@ -61,6 +61,7 @@
 #include "Shiraiwa/Objects/MapObjWall.h"
 #include "Shiraiwa/Objects/MapObjWanwan.h"
 #include "Shiraiwa/Objects/MapObjWluArrow.h"
+#include "Shiraiwa/Objects/MapObjYoshiHeli.h"
 #include "Shiraiwa/TestRollObj.h"
 #include "Shiraiwa/TestString.h"
 #include "Sato/GeographyObjMgr.h"
@@ -198,7 +199,7 @@ GEO_OBJ_NEW(TMapObjDemoFountain);
 GEO_OBJ_NEW(TMapObjSwimNossie);
 GEO_OBJ_NEW(TMapObjPtera);
 GEO_OBJ_NEW(TMapObjPeachTree2);
-// GEO_OBJ_NEW(TMapObjYoshiHeli);
+GEO_OBJ_NEW(TMapObjYoshiHeli);
 GEO_OBJ_NEW(TMapObjDesertTree);
 GEO_OBJ_NEW(TMapObjWluSearchLight);
 // GEO_OBJ_NEW(TMapObjVentilator);
