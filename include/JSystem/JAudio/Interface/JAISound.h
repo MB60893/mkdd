@@ -392,17 +392,17 @@ public:
     JAISoundParamsMove &getAuxiliary() { return params_.mMove; }
 
     // private:
-    JAISoundHandle *handle_;
-    JAIAudible *audible_;
-    JAIAudience *audience_;
-    u32 lifeTime_;
-    s32 prepareCount_;
-    JAISoundID soundID_;
-    JAISoundStatus_ status_;
-    JAISoundFader fader_;
-    u32 priority_;
-    s32 count_;
-    JAISoundParams params_;
+    JAISoundHandle *handle_; // 04
+    JAIAudible *audible_; // 08
+    JAIAudience *audience_; // 0c
+    u32 lifeTime_; // 10
+    s32 prepareCount_; // 14
+    JAISoundID soundID_; // 18
+    JAISoundStatus_ status_; // 1c
+    JAISoundFader fader_; // 24
+    u32 priority_; // 34
+    s32 count_; // 38
+    JAISoundParams params_; // 3a
 }; // Size: 0x98
 
 #endif
