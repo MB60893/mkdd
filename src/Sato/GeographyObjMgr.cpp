@@ -49,6 +49,7 @@
 #include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/Objects/MapObjHeyho.h"
 #include "Shiraiwa/Objects/MapObjIceBlock.h"
+#include "Shiraiwa/Objects/MapObjKpGear.h"
 #include "Shiraiwa/Objects/MapObjNoMove.h"
 #include "Shiraiwa/Objects/MapObjNossie.h"
 #include "Shiraiwa/Objects/MapObjPeachTree.h"
@@ -194,7 +195,7 @@ GEO_OBJ_NEW(TMapObjAntLion);
 GEO_OBJ_NEW(GeoKinojii);
 GEO_OBJ_NEW(TMapObjDinoTree);
 GEO_OBJ_NEW(TMapObjDemoFountain);
-// GEO_OBJ_NEW(TMapObjKpGear);
+GEO_OBJ_NEW(TMapObjKpGear);
 // GEO_OBJ_NEW(TMapObjKpFireBar);
 GEO_OBJ_NEW(TMapObjSwimNossie);
 GEO_OBJ_NEW(TMapObjPtera);
