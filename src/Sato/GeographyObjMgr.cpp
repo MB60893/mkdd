@@ -59,6 +59,7 @@
 #include "Shiraiwa/Objects/MapObjSnowMan.h"
 #include "Shiraiwa/Objects/MapObjSnowRock.h"
 #include "Shiraiwa/Objects/MapObjSun.h"
+#include "Shiraiwa/Objects/MapObjVentilator.h"
 #include "Shiraiwa/Objects/MapObjWall.h"
 #include "Shiraiwa/Objects/MapObjWanwan.h"
 #include "Shiraiwa/Objects/MapObjWluArrow.h"
@@ -203,7 +204,7 @@ GEO_OBJ_NEW(TMapObjPeachTree2);
 GEO_OBJ_NEW(TMapObjYoshiHeli);
 GEO_OBJ_NEW(TMapObjDesertTree);
 GEO_OBJ_NEW(TMapObjWluSearchLight);
-// GEO_OBJ_NEW(TMapObjVentilator);
+GEO_OBJ_NEW(TMapObjVentilator);
 // GEO_OBJ_NEW_S(TShineArrow);
 GEO_OBJ_NEW(TMapObjUFO);
 GEO_OBJ_NEW(TMapObjMashBalloon);
