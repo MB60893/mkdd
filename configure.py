@@ -1208,7 +1208,7 @@ config.libs = [
         [
             Object(NonMatching, "Kawano/driverData.cpp"),
             Object(NonMatching, "Kawano/driver.cpp"),
-            Object(NonMatching, "Kawano/driverMgr.cpp"),
+            Object(Matching, "Kawano/driverMgr.cpp"),
             Object(NonMatching, "Kawano/animation.cpp"),
             Object(NonMatching, "Kawano/driverAnim.cpp"),
             Object(NonMatching, "Kawano/driverAnimBuf.cpp"),
