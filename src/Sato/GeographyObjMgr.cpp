@@ -39,6 +39,7 @@
 #include "Shiraiwa/JugemMain.h"
 #include "Shiraiwa/JugemRodItem.h"
 #include "Shiraiwa/LensFlare.h"
+#include "Shiraiwa/Objects/MapObjAntLion.h"
 #include "Shiraiwa/Objects/MapObjAward.h"
 #include "Shiraiwa/Objects/MapObjBubble.h"
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
