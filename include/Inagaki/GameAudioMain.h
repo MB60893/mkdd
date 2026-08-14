@@ -93,19 +93,32 @@ public:
     // void setSeVolume(f32);
     // void checkReset();
 
-    void setFxLine(u8 lineNum) { // fabricated
+    // FABRICATED {
+    void setFxLine(u8 lineNum) {
         mConfig->set(lineNum);
     }
 
-    void set_50(int val) { // fabricated
+    void set_50(int val) {
         _50 = val;
     }
+
+    JAISoundHandle *getSoundHandle6c() {
+        return &_6c;
+    }
+
+    CustomAudience<4> *getAudience() {
+        return mAudience;
+    }
+
+    CustomMgr *getCustomMgr() { return mMgr; }
+    // } FABRICATED
 
     CameraMgr *getCamera() {
 #line 157
         JUT_ASSERT_MSG(mCamera, "GameAudioMain : カメラが初期化されていません。\n");
         return mCamera;
     }
+
     
     static Main *getAudio() { return msBasic; };
 

@@ -1,11 +1,16 @@
 #include "Bando/EngineSound.h"
+#include "Inagaki/GameAudioAudience.h"
 #include "Inagaki/GameAudioCamera.h"
 #include "Inagaki/GameAudioMain.h"
+#include "Inagaki/GameAudioMgr.h"
 #include "Inagaki/GameMapSoundMgr.h"
 #include "Inagaki/GameSoundMgr.h"
 #include "Inagaki/GameSoundTable.h"
 #include "JSystem/JAudio/Interface/JAISeMgr.h"
+#include "JSystem/JAudio/Interface/JAISound.h"
 #include "JSystem/JUtility/JUTAssert.h"
+#include "JSystem/JAudio/JASFakeMatch13.h"
+
 #include "dolphin/mtx.h"
 #include "kartEnums.h"
 #include "types.h"
@@ -32,19 +37,117 @@ ECourseID sRaceCourse;
 f32 sChibiPitch[4] = { 1.0f, 1.7f, 2.3f, 4.5f };
 
 void setPlayerMode(u8 playerMode) {
-    if (playerMode < 3) {
+    if (playerMode > 3) {
         setKillSwAllObject(true);
         sPlayerMode = 4;
         return;
     }
     sPlayerMode = playerMode;
-    int activeSe = JAISeMgr::getInstance()->getNumActiveSe();
+    Main* main = Main::getAudio();
+    s32 activeSe = JAISeMgr::getInstance()->getNumActiveSe();
 
-    CameraMgr *cameraMgr = Main::getAudio()->getCamera();
-    cameraMgr->setSceneMax(playerMode - 1);
+    CameraMgr *cameraMgr = main->getCamera();
+    cameraMgr->setSceneMax(playerMode + 1);
+
+    JAISeCategoryArrangement arrangement;
+
+    JAISoundHandle& handle = *main->getSoundHandle6c();
+
+    if(!handle.isSoundAttached() || handle->getID().mId.mFullId - 0x1000000 != 0) {
+        if (sRaceMode != 3) {
+            Main::getAudio()->changeSection(1);
+        }
+    }
+
+    switch(playerMode)
+    {
+        case 0:
+            arrangement.mItems[0].mMaxActiveSe = 8;
+            arrangement.mItems[0].mMaxInactiveSe = 12;
+            arrangement.mItems[1].mMaxActiveSe = 8;
+            arrangement.mItems[1].mMaxInactiveSe = 12;
+            arrangement.mItems[2].mMaxActiveSe = 4;
+            arrangement.mItems[2].mMaxInactiveSe = 16;
+            arrangement.mItems[3].mMaxActiveSe = 4;
+            arrangement.mItems[3].mMaxInactiveSe = 16;
+            arrangement.mItems[4].mMaxActiveSe = 8;
+            arrangement.mItems[4].mMaxInactiveSe = 12;
+            Main::getAudio()->getCustomMgr()->getSeMgr().setCategoryArrangement(arrangement);
+            Main::getAudio()->setRaceSeVolume(1.f, 0);
+            break;
+        case 1:
+            arrangement.mItems[0].mMaxActiveSe = 6;
+            arrangement.mItems[0].mMaxInactiveSe = 6;
+            arrangement.mItems[1].mMaxActiveSe = 4;
+            arrangement.mItems[1].mMaxInactiveSe = 8;
+            arrangement.mItems[2].mMaxActiveSe = 4;
+            arrangement.mItems[2].mMaxInactiveSe = 8;
+            arrangement.mItems[3].mMaxActiveSe = 4;
+            arrangement.mItems[3].mMaxInactiveSe = 8;
+            arrangement.mItems[4].mMaxActiveSe = 4;
+            arrangement.mItems[4].mMaxInactiveSe = 8;
+            Main::getAudio()->getCustomMgr()->getSeMgr().setCategoryArrangement(arrangement);
+            Main::getAudio()->setRaceSeVolume(0.8f, 0);
+            break;
+        case 2:
+            arrangement.mItems[0].mMaxActiveSe = 4;
+            arrangement.mItems[0].mMaxInactiveSe = 8;
+            arrangement.mItems[1].mMaxActiveSe = 4;
+            arrangement.mItems[1].mMaxInactiveSe = 4;
+            arrangement.mItems[2].mMaxActiveSe = 4;
+            arrangement.mItems[2].mMaxInactiveSe = 4;
+            arrangement.mItems[3].mMaxActiveSe = 4;
+            arrangement.mItems[3].mMaxInactiveSe = 4;
+            arrangement.mItems[4].mMaxActiveSe = 4;
+            arrangement.mItems[4].mMaxInactiveSe = 8;
+            Main::getAudio()->getCustomMgr()->getSeMgr().setCategoryArrangement(arrangement);
+            Main::getAudio()->setRaceSeVolume(0.7f, 0);
+            break;
+        case 3:
+            arrangement.mItems[0].mMaxActiveSe = 5;
+            arrangement.mItems[0].mMaxInactiveSe = 8;
+            arrangement.mItems[1].mMaxActiveSe = 4;
+            arrangement.mItems[1].mMaxInactiveSe = 4;
+            arrangement.mItems[2].mMaxActiveSe = 4;
+            arrangement.mItems[2].mMaxInactiveSe = 4;
+            arrangement.mItems[3].mMaxActiveSe = 4;
+            arrangement.mItems[3].mMaxInactiveSe = 4;
+            arrangement.mItems[4].mMaxActiveSe = 5;
+            arrangement.mItems[4].mMaxInactiveSe = 8;
+            Main::getAudio()->getCustomMgr()->getSeMgr().setCategoryArrangement(arrangement);
+            Main::getAudio()->setRaceSeVolume(0.65f, 0);
+            break;
+    }
 }
 
-void setRaceMode(u8) {}
+void setRaceMode(u8 raceMode) {
+    if(Main::getAudio()->getPlayingSequenceID() - 0x1000000 != 0)
+    {
+        Main::getAudio()->set_50(3);
+    }
+
+    sRaceMode = raceMode;
+    switch(raceMode) {
+        case 2:
+            Main::getAudio()->getAudience()[0].setting_._04 = 30000.f;
+            Main::getAudio()->getAudience()[0].setting_.minVolume = 0.15f;
+        break;
+
+        default:
+            Main::getAudio()->getAudience()[0].setting_._04 = 19000.f;
+            Main::getAudio()->getAudience()[0].setting_.minVolume = 0.f;
+        break;
+    }
+
+    Main::getAudio()->getAudience()[0].updateSetting();
+
+    f32 *cameraVolume = Main::getAudio()->getAudience()[0].smCameraVolume;
+    CustomAudience<4>* audience = Main::getAudio()->getAudience();
+
+    audience[0].initSlopesAndThresholds();
+
+    audience[0].updateVolume();
+}
 
 void setDemoMode(u8 demoMode) {
     bool kill = !!demoMode;

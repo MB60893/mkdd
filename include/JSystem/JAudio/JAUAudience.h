@@ -117,9 +117,9 @@ public:
     void updateSetting();
 
     struct {
-        f32 _04;
-        f32 _08;
-        f32 minVolume;
+        f32 _04; // 04 (referenceDistance)
+        f32 _08; // 08 (nearDistance)
+        f32 minVolume; // 0c
         f32 _10;
         f32 _14;
         f32 _18;
