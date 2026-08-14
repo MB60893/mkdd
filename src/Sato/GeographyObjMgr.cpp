@@ -53,6 +53,7 @@
 #include "Shiraiwa/Objects/MapObjKpGear.h"
 #include "Shiraiwa/Objects/MapObjNoMove.h"
 #include "Shiraiwa/Objects/MapObjNossie.h"
+#include "Shiraiwa/Objects/MapObjPakkun.h"
 #include "Shiraiwa/Objects/MapObjPeachTree.h"
 #include "Shiraiwa/Objects/MapObjPoihana.h"
 #include "Shiraiwa/Objects/MapObjPool.h"
@@ -194,7 +195,7 @@ GEO_OBJ_NEW(TMapObjAwardItemBox);
 // GEO_OBJ_NEW_S(TMapObjAwardCupReverse);
 // GEO_OBJ_NEW_S(TMapObjAwardCupAllTour);
 GEO_OBJ_NEW(TMapObjAntLion);
-// GEO_OBJ_NEW(TMapObjPakkun);
+GEO_OBJ_NEW(TMapObjPakkun);
 GEO_OBJ_NEW(GeoKinojii);
 GEO_OBJ_NEW(TMapObjDinoTree);
 GEO_OBJ_NEW(TMapObjDemoFountain);
@@ -234,7 +235,7 @@ GEO_OBJ_NEW(GeoSplash);
 GEO_OBJ_NEW(GeoTideSensor);
 GEO_OBJ_NEW(GeoPuller);
 GEO_OBJ_NEW(GeoShimmer);
-// GEO_OBJ_NEW_S(TMapObjPakkunColHead);
+GEO_OBJ_NEW_S(TMapObjPakkunColHead);
 GEO_OBJ_NEW(GeoSoundGen);
 GEO_OBJ_NEW(GeoRabbitMark);
 EX_GEO_OBJ_NEW(GeoJumpNarrow);
