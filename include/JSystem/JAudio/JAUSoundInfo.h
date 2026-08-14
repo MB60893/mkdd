@@ -8,7 +8,7 @@ class JAUSoundInfo : public JASGlobalInstance<JAUSoundInfo>
 {
 public:
     JAUSoundInfo(bool param_1) : JASGlobalInstance<JAUSoundInfo>(param_1) {}
-    virtual void getAudibleSw(JAISoundID) const = 0;
+    virtual u16 getAudibleSw(JAISoundID) const = 0;
     virtual u16 getBgmSeqResourceID(JAISoundID) const = 0;
 };
 
