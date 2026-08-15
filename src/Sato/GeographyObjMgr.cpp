@@ -42,6 +42,7 @@
 #include "Shiraiwa/Objects/MapObjAntLion.h"
 #include "Shiraiwa/Objects/MapObjAward.h"
 #include "Shiraiwa/Objects/MapObjBubble.h"
+#include "Shiraiwa/Objects/MapObjDesun.h"
 #include "Shiraiwa/Objects/MapObjDonkyRock.h"
 #include "Shiraiwa/Objects/MapObjDonkyRockGen.h"
 #include "Shiraiwa/Objects/MapObjDonkyTree.h"
@@ -157,7 +158,7 @@ GEO_OBJ_NEW(TMapObjNoMove);
 GEO_OBJ_NEW(GeoKuribo);
 GEO_OBJ_NEW(TMapObjSun);
 GEO_OBJ_NEW(TMapObjBubble);
-// GEO_OBJ_NEW(TMapObjDesun);
+GEO_OBJ_NEW(TMapObjDesun);
 // GEO_OBJ_NEW(TMapObjSandPillar);
 // GEO_OBJ_NEW(TMapObjFerriswheel);
 // GEO_OBJ_NEW(TMapObjMoveItemBoxLimit);
@@ -166,7 +167,7 @@ GEO_OBJ_NEW_S(TBalloon);
 // GEO_OBJ_NEW(TMapObjJetCoasterHead);
 // GEO_OBJ_NEW_S(TMapObjJetCoasterBody);
 GEO_OBJ_NEW(TMapObjPool);
-// GEO_OBJ_NEW(TMapObjDeBalloon);
+GEO_OBJ_NEW(TMapObjDeBalloon);
 // GEO_OBJ_NEW(TMapObjJetKpFire);
 GEO_OBJ_NEW_S(TMapObjSanboHead);
 GEO_OBJ_NEW_S(TMapObjSanboBody);
