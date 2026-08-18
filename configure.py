@@ -858,7 +858,7 @@ config.libs = [
             Object(Matching, "JSystem/JAudio/System/JASCallback.cpp"),
             Object(Matching, "JSystem/JAudio/System/JASCmdStack.cpp"),
             Object(Matching, "JSystem/JAudio/System/JASDvdThread.cpp"),
-            Object(Equivalent, "JSystem/JAudio/System/JASHeapCtrl.cpp"),
+            Object(Matching, "JSystem/JAudio/System/JASHeapCtrl.cpp"),
             Object(Matching, "JSystem/JAudio/System/JASProbe.cpp"),
             Object(Matching, "JSystem/JAudio/System/JASReport.cpp"),
             Object(Matching, "JSystem/JAudio/System/JASResArcLoader.cpp"),
@@ -904,7 +904,7 @@ config.libs = [
 
             Object(Matching, "JSystem/JAudio/Utility/JAUAudioArcInterpreter.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUAudioArcLoader.cpp"),
-            Object(NonMatching, "JSystem/JAudio/Utility/JAUAudioMgr.cpp"),
+            Object(Matching, "JSystem/JAudio/Utility/JAUAudioMgr.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUBankTable.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUClusterSound.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUInitializer.cpp"),
@@ -914,7 +914,7 @@ config.libs = [
             Object(Matching, "JSystem/JAudio/Utility/JAUSoundMgr.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUSoundTable.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUStreamFileTable.cpp"),
-            Object(NonMatching, "JSystem/JAudio/Utility/JAUAudience.cpp"),
+            Object(Equivalent, "JSystem/JAudio/Utility/JAUAudience.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUSectionHeap.cpp"),
             Object(Matching, "JSystem/JAudio/Utility/JAUSoundObject.cpp")
         ]

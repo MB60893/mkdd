@@ -1,6 +1,6 @@
 #include "JSystem/JAudio/JAUSeqDataBlockMgr.h"
 #include "JSystem/JAudio/Interface/JAISound.h"
-#include "JSystem/JAudio/JAUSoundInfo.h"
+#include "JSystem/JAudio/JAUAudience.h"
 #include "JSystem/JAudio/System/JASResArcLoader.h"
 #include "JSystem/JUtility/JUTAssert.h"
 #include "dolphin/types.h"

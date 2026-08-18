@@ -142,11 +142,16 @@ void JASHeap::dump() {
 }
 
 void JASHeap::dump(int level) {
-    // JUTAssertion::showAssert needs to not inline here
+    // JUTAssertion::showAssert needs to not inline here, so it's likely something like this
+
     JUT_REPORT_MSG("------------------------------------\n");
     JUT_REPORT_MSG("        ");
     JUT_ASSERT(level >= 0 && level < 7)
-    JUT_REPORT_MSG("%s Heap %08x [Addr %8x , Max %8x] %c\n", _40, mBase, mBase + mSize, level)
+    JASMutexLock lock(&mMutex);
+    for (JSUTreeIterator<JASHeap> it = mTree.getFirstChild(); it != mTree.getEndChild(); it++) {
+        JUT_REPORT_MSG("%s Heap %08x [Addr %8x , Max %8x] %c\n", it->_40, it->mBase, it->mBase + it->mSize, level);
+        it->dump(level);
+    }
     // functions emitted:
     // void JSUTree<JASHeap>::getEndChild() const;
     // void JSUTreeIterator<JASHeap>::operator++ ();

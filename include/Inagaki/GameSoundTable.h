@@ -3,7 +3,7 @@
 
 #include <JSystem/JAudio/Interface/JAISound.h>
 #include <JSystem/JAudio/Interface/JAIStreamDataMgr.h>
-#include <JSystem/JAudio/JAUSoundInfo.h>
+#include "JSystem/JAudio/JAUAudience.h"
 #include "JSystem/JAudio/JAUSoundTable.h"
 
 namespace GameAudio
