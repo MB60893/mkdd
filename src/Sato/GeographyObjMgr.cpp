@@ -47,6 +47,7 @@
 #include "Shiraiwa/Objects/MapObjDonkyRockGen.h"
 #include "Shiraiwa/Objects/MapObjDonkyTree.h"
 #include "Shiraiwa/Objects/MapObjDossun.h"
+#include "Shiraiwa/Objects/MapObjFerriswheel.h"
 #include "Shiraiwa/Objects/MapObjFountain.h"
 #include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/Objects/MapObjHeyho.h"
@@ -161,7 +162,7 @@ GEO_OBJ_NEW(TMapObjSun);
 GEO_OBJ_NEW(TMapObjBubble);
 GEO_OBJ_NEW(TMapObjDesun);
 GEO_OBJ_NEW(TMapObjSandPillar);
-// GEO_OBJ_NEW(TMapObjFerriswheel);
+GEO_OBJ_NEW(TMapObjFerriswheel);
 // GEO_OBJ_NEW(TMapObjMoveItemBoxLimit);
 GEO_OBJ_NEW_S(GeoShine);
 GEO_OBJ_NEW_S(TBalloon);
