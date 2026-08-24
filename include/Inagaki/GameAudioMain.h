@@ -128,7 +128,7 @@ private:
 
     CustomMgr *mMgr;              // 00
     CustomAudience<4> *mAudience; // 04
-    u8 _08[0xC - 0x8];            //
+    u8 _08[0xC - 0x8];            // 08
     CustomSoundTable *mTable;     // 0C
     u8 _10[4];                    //
     JAUSectionHeap *mSectionHeap; // 14

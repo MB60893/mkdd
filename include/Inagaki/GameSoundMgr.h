@@ -28,10 +28,10 @@ public:
     virtual ~SoundMgr();
     virtual void init();
     virtual void setSe(u32 id);
-    virtual void loop();
 
     void setEcho(JAISoundHandle *handlePtr, f32 mix);
     JAISoundHandle *startSoundCustom(u32 soundID, u32 p2);
+    virtual void loop();
 
     static void setKillSwAll(bool killSw);
 
@@ -357,12 +357,34 @@ private:
 
 class CircleSoundMgr : public SoundMgr<CircleSoundMgr> {
 public:
-    CircleSoundMgr(Vec *, f32, f32, f32, JKRHeap *); // 0x8012dc34
+    CircleSoundMgr(Vec *pos, f32 radius, f32 minY, f32 maxY, JKRHeap *heap); // 0x8012dc34
+
     ~CircleSoundMgr();                               // 0x8012dd68
+
     void loop();                                     // 0x8012ddc8
+
     void frameWork();                                // 0x8012e02c
-    void calcPlayPos(u32);                           // 0x8012e064
-    void setSe(u32);                                 // 0x8012e3f4
+
+    // Compute playing position for the given index
+    // Return true if a new position has been computed, false otherwise
+    bool calcPlayPos(u32 index);                     // 0x8012e064
+
+    void setSe(u32 soundEffectID);                   // 0x8012e3f4
+
+private:
+    JGeometry::TVec3f& getPlayPos(s32 index) { // fabricated
+        return mPlayPos[index];
+    }
+
+    u8 _5c; // 5c
+    bool mHasHeightRange; // 5d
+    bool mNoClamp; // 5e
+    u8 _5f; //5f
+    bool* mPlayPosComputed; // 60
+    f32 mMinY; // 64
+    f32 mMaxY; // 68
+    f32 mRadius; // 6c
+    JGeometry::TVec3f *mPlayPos; // 70
 };
 }
 
