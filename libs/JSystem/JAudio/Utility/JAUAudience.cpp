@@ -1,5 +1,8 @@
 #include "JSystem/JAUdio/JAUAudience.h"
+#include "JSystem/JAudio/System/JASHeapCtrl.h"
 #include "JSystem/JUtility/JUTAssert.h"
+
+// sdata2 ordering is incorrect, probably requires an exact match in testInstanciate...
 
 void JAUAudience_withSetting::updateSetting() {
 #line 30
@@ -14,7 +17,10 @@ void JAUAudience_withSetting::updateSetting() {
 namespace {
 
     void testInstanciate() {
-        JAUGenericAudible_<4, JAUDopplerAudibleChannel, JAUDopplerAudibleAbsPos> *audible = new JAUGenericAudible_<4, JAUDopplerAudibleChannel, JAUDopplerAudibleAbsPos>[4];
-        JAUDopplerAudience<4> *audience = new JAUDopplerAudience<4>[4];
+        //JAUGenericAudible_<4, JAUDopplerAudibleChannel, JAUDopplerAudibleAbsPos> *audible = new JAUGenericAudible_<4, JAUDopplerAudibleChannel, JAUDopplerAudibleAbsPos>[4];
+       
+        new JAUDopplerAudience<4>;
+        JASPoolAllocObject< JAUDopplerAudible<4> >::newMemPool(0x4e);
+
     }
 }

@@ -17,6 +17,9 @@ template <class T>
 class JASGlobalInstance
 {
 public:
+    JASGlobalInstance(T* inst) {
+        sInstance = inst;
+    }
     JASGlobalInstance(bool param_1)
     {
         if (param_1)

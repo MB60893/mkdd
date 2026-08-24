@@ -1,9 +1,8 @@
-#include "JSystem/JAudio/Interface/JAISeqDataMgr.h"
 #define JAUSECTIONHEAP_FIX
-
+#include "JSystem/JAudio/Interface/JAISeqDataMgr.h"
+#include "JSystem/JAudio/JAUAudience.h"
 #include "JSystem/JAudio/JAUSectionHeap.h"
 #include "JSystem/JAudio/JAUSeqCollection.h"
-#include "JSystem/JAudio/JAUSoundInfo.h"
 #include "JSystem/JAudio/JAUStreamFileTable.h"
 #include "JSystem/JAudio/System/JASBNKParser.h"
 #include "JSystem/JAudio/System/JASCriticalSection.h"
@@ -398,7 +397,7 @@ bool JAUSection::newStaticSeqData(JAISoundID soundID) {
     JKRArchive *seqArchive = data_.seqDataBlocks_.getSeqDataArchive();
 #line 479
     JUT_ASSERT(seqArchive);
-    JAUSoundInfo *soundInfo = JASGlobalInstance<JAUSoundInfo>::getInstance();
+    JAUSoundInfo *soundInfo = JAUSoundInfo::getInstance();
     if (!soundInfo)
     {
         JUT_WARNING_F2("%s", "cannot JAUSoundInfo::getInstance().");

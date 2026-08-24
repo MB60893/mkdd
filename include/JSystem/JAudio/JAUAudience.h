@@ -40,19 +40,42 @@ struct JAUAudibleParam {
     } _00;
 };
 
+class JAUSoundInfo : public JASGlobalInstance<JAUSoundInfo>
+{
+public:
+    JAUSoundInfo(bool param_1) : JASGlobalInstance<JAUSoundInfo>(param_1) {}
+    virtual u16 getAudibleSw(JAISoundID) const = 0;
+    virtual u16 getBgmSeqResourceID(JAISoundID) const = 0;
+
+    JAUAudibleParam getAudibleSwFull(JAISoundID soundID) {
+        JAUAudibleParam audibleParams;
+        audibleParams._00.half.f0 = getAudibleSw(soundID);
+        audibleParams._00.half.f1 = 0xffff;
+        return audibleParams;
+    }
+};
 
 class JAUAudibleAbsPos {
 public:
     JAUAudibleAbsPos() {}
     ~JAUAudibleAbsPos() {}
 
+    void init(JGeometry::TVec3f* param_0, const JGeometry::TVec3f& param_1, const JGeometry::TVec3f* param_2) {
+        param_0->set(param_1);
+        if (param_2 != NULL) {
+            _00.set(*param_2);
+            velocity_.sub(param_1, _00);
+        } else {
+            _00.set(param_1);       
+            velocity_.zero();
+        }
+    }
+
     void calc(const JGeometry::TVec3f &p1) {
-        _0C.sub(p1, _00);
-        _00.set(p1);
     }
 
     JGeometry::TVec3f _00;
-    JGeometry::TVec3f _0C;
+    JGeometry::TVec3f velocity_;
 };
 
 class JAUDopplerAudibleAbsPos {
@@ -60,13 +83,24 @@ public:
     JAUDopplerAudibleAbsPos() {}
     ~JAUDopplerAudibleAbsPos() {}
 
+    void init(JGeometry::TVec3f* param_0, const JGeometry::TVec3f& param_1, const JGeometry::TVec3f* param_2) {
+        param_0->set(param_1);
+        if (param_2 != NULL) {
+            _00.set(*param_2);
+            velocity_.sub(param_1, _00);
+        } else {
+            _00.set(param_1);       
+            velocity_.zero();
+        }
+    }
+
     void calc(const JGeometry::TVec3f &p1) {
-        _0C.sub(p1, _00);
+        velocity_.sub(p1, _00);
         _00.set(p1);
     }
 
     JGeometry::TVec3f _00;
-    JGeometry::TVec3f _0C;
+    JGeometry::TVec3f velocity_;
 };
 
 class JAUAudibleRelPos {
@@ -81,6 +115,11 @@ public:
 class JAUAudibleChannel {
 public:
     JAUAudibleChannel() {}
+
+    void init() {
+        params_.init();
+        _30 = 1.0f;
+    }
 
     JASSoundParams params_;
     JGeometry::TVec3f _14;
@@ -114,6 +153,13 @@ public:
         updateSetting();
     }
     ~JAUAudience_withSetting() {}
+
+    //virtual JAIAudible *newAudible(const JGeometry::TVec3f &, JAISoundID soundID, const JGeometry::TVec3f *, u32 channels) = 0;
+    //virtual int getMaxChannels() = 0;
+    //virtual void deleteAudible(JAIAudible *audible) = 0;
+    //virtual u32 calcPriority(JAIAudible *audible) = 0;
+    //virtual void mixChannelOut(const JASSoundParams &params, JAIAudible *audible, int channel) = 0;
+
     void updateSetting();
 
     struct {
@@ -149,67 +195,7 @@ public:
 };
 
 
-class JAUAudienceState {
-public:
-    JAUAudienceState() {}
-    //~JAUAudienceState() {}
 
-    void init() {
-        Mtx m;
-        PSMTXIdentity(m);
-        resetMtx(m);
-    }
-    void resetMtx(const Mtx in) {
-        JGeometry::TPos3f m;
-        mMtx.set(in);
-        m.setPositionFromLookAt(mMtx);
-        m.getTrans(_3c);
-        _48.set(_3c);
-        _30.zero();
-
-    }
-
-    JGeometry::TPos3f mMtx;
-    JGeometry::TVec3f _30;
-    JGeometry::TVec3f _3c;
-    JGeometry::TVec3f _48;
-
-};
-
-class JAUDopplerAudienceState {
-public:
-    JAUDopplerAudienceState() {}
-    //~JAUDopplerAudienceState() {}
-
-    void init() {
-        Mtx m;
-        PSMTXIdentity(m);
-        resetMtx(m);
-    }
-    void resetMtx(const Mtx in) {
-        JGeometry::TPos3f m;
-        mMtx.set(in);
-        m.setPositionFromLookAt(mMtx);
-        m.getTrans(_3c);
-        _48.set(_3c);
-        _30.zero();
-    }
-
-    void setMtx(const Mtx in) {
-        JGeometry::TPos3f m;
-        _48.set(_3c);
-        mMtx.set(in);
-        m.setPositionFromLookAt(mMtx);
-        m.getTrans(_3c);
-        _30.sub(_3c, _48);
-    }
-
-    JGeometry::TPos3f mMtx;
-    JGeometry::TVec3f _30;
-    JGeometry::TVec3f _3c;
-    JGeometry::TVec3f _48;
-
-}; // Size: 0x54
 
 class JAUDopplerAudibleChannel : public JAUAudibleChannel {
 public:
@@ -219,11 +205,37 @@ public:
 template <int N, class Channel, class AbsPos>
 class JAUGenericAudible_ : public JAIAudible {
 public:
-    JAUGenericAudible_() {}
+    JAUGenericAudible_(const JGeometry::TVec3f &pos, const JGeometry::TVec3f *p3, u32 channel) {
+        audiblep._00.raw = 0xffffffff;
+        absPos_.init(&mPos, pos, p3);
+        for (int i = 0; i < N; i++) {
+            if ((channel & (1 << i)) == 0) {
+                channels[i].init();
+                channel_[i] = &channels[i];
+            }
+            else {
+                channel_[i] = NULL;
+            }
+        }
+    }
     ~JAUGenericAudible_() {}
 
     void calc() {
         absPos_.calc(mPos);
+    }
+
+    u32 getDistVolBit() {
+        u16 uVar1 = getAudibleParam()._00.half.f1;
+        if (uVar1 != 0) {
+            if ((uVar1 & 7) != 0) {
+                return uVar1 & 7;
+            }
+            if ((uVar1 & 0x70) != 0) {
+                return ((int)(uVar1 & 0x70) >> 4) + 7;
+            }
+        }
+
+        return 0;
     }
 
     JASSoundParams *getOuterParams(int index) {
@@ -247,6 +259,10 @@ public:
     JAUAudibleParam &getAudibleParam() { return audiblep; }
     const JAUAudibleParam getAudibleParam() const { return audiblep; }
 
+    void setAudibleParam(JAUAudibleParam param) {
+        audiblep = param;
+    }
+
     static const int MAX_CHANNELS = N;
 
     JAUAudibleParam audiblep;
@@ -264,7 +280,8 @@ public:
         }
     }
     ~JAUAudience_() {
-        
+#line 617
+        JUT_ASSERT(!isActive());
     }
 
     bool isActive() const { return Audible::getTotalMemCount() != Audible::getFreeMemCount(); };
@@ -302,7 +319,7 @@ public:
     f32 calcPitch_(JAUAudibleChannel *channel, const Audible *audible, int index) {
         JAUAudibleParam audParam = audible->getAudibleParam();
         if ((*(u8*)&audParam._00.raw >> 4) & 0xf) { // probably fake
-            f32 dopplerPwr = calcPitchDoppler_(channel->_20, state[index]._30, audible->absPos_._0C, audible->getAudibleParam().getDopplerPower());
+            f32 dopplerPwr = calcPitchDoppler_(channel->_20, state[index]._30, audible->absPos_.velocity_, audible->getAudibleParam().getDopplerPower());
             
             if (channel->_30 > 0.0f) {
                 if (channel->_30 > (dopplerPwr * this->setting_._34)) {
@@ -406,48 +423,63 @@ public:
     
     u32 calcPriority(JAIAudible *i_audible) {
         u32 deltaPriority[N];
+        
         Audible *audible = (Audible*)i_audible;
-        JAUAudibleChannel *channel; // regswap most likely caused by missing inline(convertAbsToRel)
         if (!audible->getAudibleParam()._00.bytes.b0_4) {
+            
             for (int i = 0; i < numPlayers_; i++) {
-                channel = audible->getChannel(i);
-                if (channel != NULL) {
-                    JGeometry::TVec3f diff;
-                    diff.sub(audible->mPos, state[i]._3c);
-                    PSMTXMultVecSR(state[i].mMtx, &diff, &channel->_14);
-                    channel->_2C = channel->_20.normalize(diff);                    
-                }
+                state[i].convertAbsToRel(audible, i);
             }
             return 0;
-        } else {
-            u32 rv = 0xffffffff;
-            for (int i = 0; i < numPlayers_; i++) {
-                channel = (audible)->getChannel(i);
-                if (channel != NULL) {
-                    JGeometry::TVec3f diff;
-                    diff.sub(audible->mPos, state[i]._3c);
-                    PSMTXMultVecSR(state[i].mMtx, &diff, &channel->_14);
-                    channel->_2C = channel->_20.normalize(diff);
-                    deltaPriority[i] = calcDeltaPriority_(channel->_2C, audible->getAudibleParam()._00.bytes.b0_7);
-                    if (deltaPriority[i] < rv) {
-                        rv = deltaPriority[i];
-                    }
-                }
-            }
-            return rv;
-        }
+        } 
+        
+        u32 rv = 0xffffffff;
+        for (int i = 0; i < numPlayers_; i++) {
+            JAUAudibleChannel *channel = audible->getChannel(i);
+            if (channel) {
+                // something is wrong here with convertAbsToRel,
+                // it's supposed to be this: state[i].convertAbsToRel(audible, i);
+                // however that creates more asserts, and making a new inline without asserts doesn't fix it either
+                channel->_2C = state[i].convertAbsToRel(audible->mPos, &channel->_20, &channel->_14);
 
+                deltaPriority[i] = calcDeltaPriority_(channel->_2C, audible->getAudibleParam()._00.bytes.b0_7);
+                if (deltaPriority[i] < rv) {
+                    rv = deltaPriority[i];
+                }
+            }            
+        }
+        return rv;
     }
+
     void deleteAudible(JAIAudible *audible) {
         delete audible;
     }
-    JAIAudible *newAudible(const JGeometry::TVec3f &p1, JAISoundID soundID, const JGeometry::TVec3f *p3, u32 channel) {
-        u32 uVar4 = channel | ~((1 << numPlayers_) + -1);
-        if (uVar4 == 0xffffffff) {
+    JAIAudible *newAudible(const JGeometry::TVec3f &pos, JAISoundID soundID, const JGeometry::TVec3f *p3, u32 channels) {
+        u32 channelNum = channels | ~((1 << numPlayers_) - 1);
+        if (channelNum == 0xffffffff) {
             JUT_WARNING_F2("%s", "You masked all audible channels !")
             return NULL;
         }
-        return new Audible();
+
+        Audible *audible =  new Audible(pos, p3, channelNum);
+        if (audible == NULL) {
+            return NULL;
+        }
+
+        for (int i = 0; i < numPlayers_; i++) {
+            state[i].convertAbsToRel(audible, i);            
+        }
+
+        if (JAUSoundInfo::getInstance()) {
+            u16 sw = JAUSoundInfo::getInstance()->getAudibleSw(soundID);
+            JAUAudibleParam audibleParams;
+            audibleParams._00.half.f0 = sw;
+            audibleParams._00.half.f1 = 0xffff;
+
+            audible->setAudibleParam(audibleParams);
+        }
+
+        return audible;
     }
 
     void setAudienceMtx(MtxPtr m, int playerNumber, bool doReset) {
@@ -471,7 +503,9 @@ public:
 template <int N>
 class JAUAudible : public JAUGenericAudible_<N, JAUAudibleChannel, JAUAudibleAbsPos>, public JASPoolAllocObject< JAUAudible<N> > {
 public:
-    JAUAudible() {
+    typedef JAUGenericAudible_<N, JAUAudibleChannel, JAUAudibleAbsPos> BaseAudible;
+    
+    JAUAudible(const JGeometry::TVec3f &pos, const JGeometry::TVec3f *p3, u32 channel) : BaseAudible(pos, p3, channel) {
     }
     ~JAUAudible() {
        
@@ -481,13 +515,120 @@ public:
 template <int N>
 class JAUDopplerAudible : public JAUGenericAudible_<N, JAUDopplerAudibleChannel, JAUDopplerAudibleAbsPos>, public JASPoolAllocObject< JAUDopplerAudible<N> > {
 public:
-    JAUDopplerAudible() {
+    typedef JAUGenericAudible_<N, JAUDopplerAudibleChannel, JAUDopplerAudibleAbsPos> BaseAudible;
+
+    JAUDopplerAudible(const JGeometry::TVec3f &pos, const JGeometry::TVec3f *p3, u32 channel) : BaseAudible(pos, p3, channel) {
         
     }
     ~JAUDopplerAudible() {
         
     }
+
+    
 };
+
+class JAUAudienceState {
+public:
+    JAUAudienceState() {}
+    //~JAUAudienceState() {}
+
+    void init() {
+        Mtx m;
+        PSMTXIdentity(m);
+        resetMtx(m);
+    }
+    void resetMtx(const Mtx in) {
+        JGeometry::TPos3f m;
+        mMtx.set(in);
+        //m.setPositionFromLookAt(mMtx);
+        m.getTrans(_3c);
+        _48.set(_3c);
+        _30.zero();
+
+    }
+
+    f32 convertAbsToRel(const JGeometry::TVec3f& src, JGeometry::TVec3f* src2, JGeometry::TVec3f* dst) {
+        JGeometry::TVec3f diff;
+        diff.sub(src, _3c);
+        PSMTXMultVecSR(mMtx, &diff, dst);
+        return src2->normalize(diff);
+    }
+
+    template <int N> 
+    void convertAbsToRel(JAUAudible<N> *audible, int i) {
+        JAUAudibleChannel *channel = audible->getChannel(i);
+        if (channel == NULL)
+            return;
+        
+        JGeometry::TVec3f diff;
+        diff.sub(audible->mPos, _3c);
+        PSMTXMultVecSR(mMtx, &diff, &channel->_14);
+        channel->_2C = channel->_20.normalize(diff);   
+        return;
+    }
+
+    JGeometry::TPos3f mMtx;
+    JGeometry::TVec3f _30;
+    JGeometry::TVec3f _3c;
+    JGeometry::TVec3f _48;
+
+};
+
+class JAUDopplerAudienceState {
+public:
+    JAUDopplerAudienceState() {}
+    //~JAUDopplerAudienceState() {}
+
+    void init() {
+        Mtx m;
+        PSMTXIdentity(m);
+        resetMtx(m);
+    }
+    void resetMtx(const Mtx in) {
+        JGeometry::TPos3f m;
+        mMtx.set(in);
+        m.setPositionFromLookAt(mMtx);
+        m.getTrans(_3c);
+        _48.set(_3c);
+        _30.zero();
+    }
+
+    void setMtx(const Mtx in) {
+        JGeometry::TPos3f m;
+        _48.set(_3c);
+        mMtx.set(in);
+        m.setPositionFromLookAt(mMtx);
+        m.getTrans(_3c);
+        _30.sub(_3c, _48);
+    }
+
+
+    f32 convertAbsToRel(const JGeometry::TVec3f &src, JGeometry::TVec3f* src2, JGeometry::TVec3f* dst) {
+        JGeometry::TVec3f diff;
+        diff.sub(src, _3c);
+        PSMTXMultVecSR(mMtx, &diff, dst);
+        return src2->normalize(diff);
+    }
+
+    template <int N> 
+    void convertAbsToRel(JAUDopplerAudible<N> *audible, int i) {
+        JAUAudibleChannel *channel = audible->getChannel(i);
+        if (channel == NULL)
+            return;
+        
+        JGeometry::TVec3f diff;
+        diff.sub(audible->mPos, _3c);
+        PSMTXMultVecSR(mMtx, &diff, &channel->_14);
+        channel->_2C = channel->_20.normalize(diff);
+        
+    }
+
+    JGeometry::TPos3f mMtx;
+    JGeometry::TVec3f _30;
+    JGeometry::TVec3f _3c;
+    JGeometry::TVec3f _48;
+
+}; // Size: 0x54
 
 
 template <int N>
