@@ -32,7 +32,7 @@ public:
     bool hasHeartsRemaining() const { return !mNoHeartsRemaining; }
 
     f32 mRot;
-    Mtx mRotMtx;
+    JGeometry::TRot3f mRotMtx;
     s16 mRemainingNum; // 2e4
     s16 mLostNum; // 2e6;
     J3DEfctHeart *mEffects[2]; // 2e8

@@ -23,6 +23,6 @@ public:
     virtual ~ItemStar() {} // 0x80255ec8
 
     f32 mRot;
-    Mtx mRotMtx;
+    JGeometry::TRot3f mRotMtx;
 };
 #endif // ITEMSTAR_H
