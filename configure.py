@@ -1079,7 +1079,7 @@ config.libs = [
         [],
         [
             Object(Matching, "Kameda/Motor.cpp"),
-            Object(NonMatching, "Kameda/MotorManager.cpp"),
+            Object(Matching, "Kameda/MotorManager.cpp"),
             Object(Matching, "Kameda/J2DManager.cpp"),
             Object(Matching, "Kameda/Task.cpp"),
             Object(NonMatching, "Kameda/Goal2D.cpp"),
