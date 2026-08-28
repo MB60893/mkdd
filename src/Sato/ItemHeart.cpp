@@ -142,7 +142,7 @@ void ItemHeart::initEquip()
     mpHandAnmMtx = getHandAnmMtx();
     mVel.zero();
     mPos.zero();
-    JMath::gekko_ps_copy12(mRotMtx, _210); // NOTE: mRotMtx might be SMatrix34C, spot other inlnes to be sure
+    mRotMtx.set(_210);
 }
 
 void ItemHeart::doEquip()
