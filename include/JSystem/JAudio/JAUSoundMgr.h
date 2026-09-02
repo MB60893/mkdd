@@ -15,6 +15,12 @@ public:
     void calc();
     void mixOut();
 
+    // FABRICATED {
+    JAISeMgr& getSeMgr() {
+        return mSeMgr;
+    }
+    // } FABRICATED
+
 private:
     JAISeMgr mSeMgr;
     JAISeqMgr mSeqMgr;

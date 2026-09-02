@@ -1,6 +1,7 @@
 #ifndef JAUDIO_JAUSOUNDANIMATOR_H
 #define JAUDIO_JAUSOUNDANIMATOR_H
 
+#include "JSystem/JAudio/Interface/JAISound.h"
 #include "JSystem/JAudio/Interface/JAISoundHandles.h"
 #include "JSystem/JAudio/System/JASSoundParams.h"
 #include "JSystem/JUtility/JUTAssert.h"
@@ -77,7 +78,7 @@ public:
 class JAUSoundAnimationControl {
 public:
     virtual ~JAUSoundAnimationControl() = 0;
-    virtual JAUSoundAnimationSound* getSound(const JAUSoundAnimation*, int) = 0;
+    virtual /*const*/ JAUSoundAnimationSound* getSound(const JAUSoundAnimation*, int) = 0;
     virtual u16 getNumSounds(const JAUSoundAnimation*) = 0;
 };
 
@@ -121,6 +122,9 @@ public:
     void removeAnimation();
     void startAnimation(const JAUSoundAnimation *animation, bool, f32, f32);
     void updateAnimation(f32, const JGeometry::TVec3f&, JAISoundStarter *starter);
+
+    int getNumHandles() const { return handles_->getNumHandles(); }
+    JAISoundHandle &getHandle(int index) { return handles_->getHandle(index); }
 
     void setLoopStartFrame(f32 val) {
 #line 178

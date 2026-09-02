@@ -153,7 +153,11 @@ private:
         KartGamePad *_18;  // 18
         // Size: 0x1c
     } _318[2];                 // 318
-    int _350;                  //
+
+public:
+    int _350;                  // 350 (number of [human] players?)
+
+private:
     int _354;                  //
     ERaceLevel mLevel;         //
     u8 _35c;                   //

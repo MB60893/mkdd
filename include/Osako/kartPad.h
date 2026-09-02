@@ -18,6 +18,7 @@ public:
         PORT_2 = 1,
         PORT_3 = 2,
         PORT_4 = 3,
+        PORT_COUNT = 4,
     };
 
     enum PadType

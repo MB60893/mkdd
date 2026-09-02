@@ -64,11 +64,16 @@ public:
 
     u32 getSceneMax() const { return mSceneMax; }
 
+    CameraInfo* getCameraInfo(u32 index) const {
+        #line 79
+        JUT_ASSERT_MSG(index < _4, "GameAudioCamera : カメラナンバーが不正です。\n");
+        return mCamInfo + index;
+    }
 //private:
-    CustomAudience<4> *mAudience;
-    u32 _4;
-    u32 mSceneMax;
-    CameraInfo *mCamInfo;
+    CustomAudience<4> *mAudience; // 00
+    u32 _4; // 04
+    u32 mSceneMax; // 08
+    CameraInfo *mCamInfo; // 0c
 }; // Size: 0x10
 
 }
