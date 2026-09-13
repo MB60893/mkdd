@@ -438,10 +438,10 @@ void TFreeFall::init(JGeometry::TVec3f *pos, JGeometry::TVec3f *vel, JGeometry::
 }
 
 void TFreeFall::reset() {
-    _4 = 0.99f;
-    _8 = 1.0f;
-    _c = 0.3f;
-    _10 = 1.0f;
+    mAirFriction = 0.99f;
+    mFriction = 1.0f;
+    mGravitySize = 0.3f;
+    mReflectRate = 1.0f;
     mRotSpeed = 0.95f;
     mGravity = 50.0f;
     mEnabled = false;
@@ -459,7 +459,7 @@ void TFreeFall::roll() {
     JGeometry::TVec3f gravity;
 
     pos.set(*mPos);
-    mVel->scale(_4);
+    mVel->scale(mAirFriction);
     getGravity(&gravity);
     addAccel(gravity);
     mPos->add(*mVel);
@@ -486,18 +486,18 @@ void TFreeFall::reflect(const JGeometry::TVec3f &param_1) {
         } else {
             crsGround.getNormal(&local_94);
             mPos->y = mGravity + crsGround.getHeight();
-            mVel->scale(_8);
+            mVel->scale(mFriction);
         }
 
         local_ac.scale(local_94.dot(*mVel), local_94);
 
-        if (PSVECMag(&local_ac) > _c) {
+        if (PSVECMag(&local_ac) > mGravitySize) {
             getReflect(local_94, &local_b8);
         } else {
             local_b8.zero();
         }
 
-        local_ac.scale(-(_10 + 1.0f));
+        local_ac.scale(-(mReflectRate + 1.0f));
         local_ac.add(local_b8);
         mVel->add(local_ac);
     }
@@ -572,19 +572,19 @@ void TFreeFall::addAccel(const JGeometry::TVec3f &accel) {
 
 void TFreeFall::getGravity(JGeometry::TVec3f *gravity) {
     gravity->set(0.0f, -1.0f, 0.0f);
-    gravity->scale(_c);
+    gravity->scale(mGravitySize);
 }
 
 void TFreeFallShakeSky::getGravity(JGeometry::TVec3f *gravity) {
     gravity->set(*RCMGetCourse()->getDirY());
     gravity->normalize();
     gravity->negate();
-    gravity->scale(_c);
+    gravity->scale(mGravitySize);
 }
 
 void TFreeFallShakeSky::reset() {
     TFreeFall::reset();
-    _34 = 5.0f;
+    mJumpPow = 5.0f;
     _38 = 0;
     _30 = 0.0f;
     mRnd = nullptr;
@@ -632,7 +632,7 @@ void TFreeFallShakeSky::reflect(const JGeometry::TVec3f &param_1) {
             f32 height = crsGround.getHeight();
 
             f25 = (mGravity + height) - mPos->y;
-            mVel->scale(_8);
+            mVel->scale(mFriction);
             
             if (_38 != 0 && _30 > F_HALF_PI) {
                 if (mRnd != nullptr) {
@@ -654,7 +654,7 @@ void TFreeFallShakeSky::reflect(const JGeometry::TVec3f &param_1) {
                     mVel->add(local_3c);
                 }
                 
-                mVel->y += (_34 * SiUtil::getNormalRange(mVel->length(), 5.0f, 20.0f) + 1.0f);
+                mVel->y += (mJumpPow * SiUtil::getNormalRange(mVel->length(), 5.0f, 20.0f) + 1.0f);
                 _30 = 0.0f;
             }
         }
@@ -666,7 +666,7 @@ void TFreeFallShakeSky::reflect(const JGeometry::TVec3f &param_1) {
         local_18.scale(local_48.dot(*mVel), local_48);
         
         JGeometry::TVec3f local_0c;
-        local_0c.scale(-(1.0f + _10), local_18);
+        local_0c.scale(-(1.0f + mReflectRate), local_18);
         mVel->add(local_0c);
         
         local_18.scale(f25, local_48);

@@ -128,10 +128,10 @@ public:
     virtual void addAccel(const JGeometry::TVec3f &);
     void init(JGeometry::TVec3f *, JGeometry::TVec3f *, JGeometry::TPos3f *);
 
-    f32 _4;
-    f32 _8;
-    f32 _c;
-    f32 _10;
+    f32 mAirFriction;
+    f32 mFriction;
+    f32 mGravitySize;
+    f32 mReflectRate;
     f32 mRotSpeed;
     f32 mGravity;
     bool mEnabled;
@@ -158,7 +158,7 @@ public:
 
     stRandom *mRnd;
     f32 _30;
-    f32 _34;
+    f32 mJumpPow;
     u8 _38;
 };
 
