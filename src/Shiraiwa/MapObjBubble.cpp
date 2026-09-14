@@ -101,12 +101,16 @@ void TMapObjBubble::initFunc_Start() {
     stopParticle();
 }
 
+void TMapObjBubble::startParticle() {}
+
 void TMapObjBubble::stopParticle() {
     if (mEmitter == nullptr) {
         return;
     }
     mEmitter->setFlag(1);
 }
+
+void TMapObjBubble::moveEmitter() {}
 
 void TMapObjBubble::doFunc_Start() {
     if (getStateCount() > mCountStateStart) {
