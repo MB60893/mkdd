@@ -467,7 +467,6 @@ void GeoCar::checkItemCollision() {
     }
 }
 
-
 void GeoCar::hitItemBomb() {
     StateObserver::setState(2);
 }
@@ -485,6 +484,8 @@ void GeoCar::hitItemGTurtleBig() {
 void GeoCar::InitExec() { Observer_FindAndInit(GeoCar, 6); }
 
 void GeoCar::MoveExec() { Observer_FindAndExec(GeoCar, 6); }
+
+void GeoCar::drawPrimForDebug(u32) {}
 
 void GeoCar::getTargetPosition(JGeometry::TVec3f *out) {
     CrsData *crsData = RaceMgr::getManager()->getCourse()->getCrsData();
