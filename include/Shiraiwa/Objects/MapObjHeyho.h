@@ -27,7 +27,7 @@ public:
     virtual void calc();
     virtual void reset() {};
 
-    // void THeyhoSupervisor::entry(TMapObjHeyho *);
+    void entry(TMapObjHeyho *);
 
     JSUList<TMapObjHeyho> _24;
 };

@@ -85,6 +85,8 @@ void THeyhoSupervisor::calc() {
     }
 }
 
+void THeyhoSupervisor::entry(TMapObjHeyho *) {}
+
 TMapObjHeyho::TMapObjHeyho(const CrsData::SObject &sObject) : TMapObjHioNode(sObject), StateObserver(), mLinkHeyho(this) {
     NewAnmCtrl();
     createSoundMgr();
