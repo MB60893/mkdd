@@ -14,13 +14,13 @@
 s16 TPathWalk::sNearlyReachTargetLength = 300;
 s16 TFreeFly::sNearlyReachTargetLength = 500;
 
-TPathUtil::TPathUtil() {}
-
 TPathUtil::TPathUtil(const CrsData::SObject *sObject) {
     setPointIndex(0);
     mDirection = 1;
     mObj = sObject;
 }
+
+TPathUtil::TPathUtil() {}
 
 TPathUtil::~TPathUtil() {}
 
@@ -35,10 +35,8 @@ u16 TPathUtil::getNextNode() {
     s16 nextNode = getPointIndex();
     nextNode += mDirection;
 
-    CrsData::PathData *pathData = RCMGetCourse()->getCrsData()->getPathData(mObj->mPathID);
-    if (nextNode >= pathData->getPointNumber()) {
-        pathData = RCMGetCourse()->getCrsData()->getPathData(mObj->mPathID);
-        if (pathData->isClosed()) {
+    if (nextNode >= RCMGetCourse()->getCrsData()->getPathData(mObj->mPathID)->getPointNumber()) {
+        if (RCMGetCourse()->getCrsData()->getPathData(mObj->mPathID)->isClosed()) {
             nextNode = 0;
         } else {
             nextNode = getPointIndex() - 1;
@@ -139,6 +137,12 @@ void TPathUtilInterrupt::reset() {
     mDirection = 1;
     _20 = false;
 }
+
+void TPathUtilInterrupt::getCurrentNodePos(JGeometry::TVec3f *) {}
+
+void TPathUtilInterrupt::getNextNodePos(JGeometry::TVec3f *) {}
+
+void TPathUtilInterrupt::updateNode() {}
 
 TPathWalk::TPathWalk(const CrsData::SObject *sObject) {
     _88 = new TPathUtilInterrupt(sObject);
@@ -333,6 +337,8 @@ void TPathWalk::forceTurn(const JGeometry::TVec3f &param_1, const JGeometry::TVe
     dirUpdate();
 }
 
+bool TPathWalkSphere::checkReachTarget() {}
+
 TFreeFly::TFreeFly() {
     mFreeRotate = nullptr;
     mPosition = nullptr;
@@ -416,6 +422,8 @@ bool TFreeFly::checkReachTarget() {
     }
     return reached;
 }
+
+void TFreeFly::forceTurn(JGeometry::TVec3f &param_1) {}
 
 TFreeFall::TFreeFall() {}
 
@@ -714,17 +722,6 @@ void TFreeFallShakeSky::rotate() {
     }
 }
 
-TFreeFallShakeSky::~TFreeFallShakeSky() {}
-
-
-void TPathUtilInterrupt::getCurrentNodePos(JGeometry::TVec3f *) {}
-
-void TPathUtilInterrupt::getNextNodePos(JGeometry::TVec3f *) {}
-
-void TPathUtilInterrupt::updateNode() {}
-
-
-TFreeFallDonkyRock::~TFreeFallDonkyRock() {}
 
 void TFreeFallDonkyRock::reflect(const JGeometry::TVec3f &) {}
 
@@ -732,5 +729,6 @@ void TFreeFallDonkyRock::reset() {}
 
 void TFreeFallDonkyRock::getReflect(const JGeometry::TVec3f &, JGeometry::TVec3f *) {}
 
+TFreeFallDonkyRock::~TFreeFallDonkyRock() {}
 
 #include "JSystem/JAudio/JASFakeMatch2.h"

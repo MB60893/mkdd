@@ -84,6 +84,12 @@ public:
     f32 _a4;                                // 0xa4
 };
 
+class TPathWalkSphere : TPathWalk {
+public:
+    TPathWalkSphere(const CrsData::SObject &sObject) : TPathWalk(&sObject) {}
+    virtual ~TPathWalkSphere();
+    bool checkReachTarget();
+};
 
 class TFreeFly {
 public:
@@ -128,13 +134,13 @@ public:
     virtual void addAccel(const JGeometry::TVec3f &);
     void init(JGeometry::TVec3f *, JGeometry::TVec3f *, JGeometry::TPos3f *);
 
-    f32 mAirFriction;
-    f32 mFriction;
-    f32 mGravitySize;
-    f32 mReflectRate;
-    f32 mRotSpeed;
-    f32 mGravity;
-    bool mEnabled;
+    f32 mAirFriction;           // 0x4
+    f32 mFriction;              // 0x8
+    f32 mGravitySize;           // 0xc
+    f32 mReflectRate;           // 0x10
+    f32 mRotSpeed;              // 0x14
+    f32 mGravity;               // 0x18
+    bool mEnabled;              // 0x1c
     JGeometry::TVec3f *mPos;    // 0x20
     JGeometry::TVec3f *mVel;    // 0x24
     JGeometry::TPos3f *mRot;    // 0x28
@@ -145,7 +151,7 @@ public:
     TFreeFallShakeSky(JGeometry::TVec3f *pos, JGeometry::TVec3f *vel, JGeometry::TPos3f *rot) : TFreeFall(pos, vel, rot) {
         mRnd = nullptr;
     }
-    virtual ~TFreeFallShakeSky();
+    virtual ~TFreeFallShakeSky() {}
     virtual void reset();
     virtual void reflect(const JGeometry::TVec3f &);
     virtual void rotate();
