@@ -31,8 +31,8 @@ public:
     static J3DAnmTextureSRTKey *sBubbleBtkAnm;      // 0x80417008
 
     // Inline/Unused
-    //void startParticle();
-    //void moveEmitter();
+    void startParticle();
+    void moveEmitter();
 
     // Inline
     virtual void MoveExec();                        // 0x802ba14c
