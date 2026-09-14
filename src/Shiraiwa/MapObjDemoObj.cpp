@@ -36,6 +36,11 @@ TMapObjDemoObj::TMapObjDemoObj(u32 id) : TMapObjHioNode(id) {
 
 TMapObjDemoObj::~TMapObjDemoObj() {}
 
+void TMapObjDemoObj::flagReset() {
+    mDemoFlags = 0;
+    mDemoFlags |= 1;
+}
+
 void TMapObjDemoObj::reset() {
     GeographyObj::resetObject();
     clrObjFlagHidding();
@@ -93,18 +98,6 @@ void TMapObjDemoObj::calc() {
     }
 }
 
-void TMapObjDemoObj::setCurrentViewNo(u32 viewNo) {
-    mModel.setCurrentViewNo(viewNo);
-    LightObj *lightObj = LightMgr::getManager()->searchLight(viewNo + 0x53434e30);
-    MtxPtr effectMtx = lightObj->getEffectMtx();
-    mModel.setEffectMtx(effectMtx, 1);
-}
-
-void TMapObjDemoObj::flagReset() {
-    mDemoFlags = 0;
-    mDemoFlags |= 1;
-}
-
 bool TMapObjDemoObj::checkKartLength() {
     if (mDistanceCheckTimer == 0) {
         JGeometry::TVec3f diff;
@@ -119,6 +112,13 @@ bool TMapObjDemoObj::checkKartLength() {
     }
 
     return mKartDistanceSq < mTrackDistanceSq;
+}
+
+void TMapObjDemoObj::setCurrentViewNo(u32 viewNo) {
+    mModel.setCurrentViewNo(viewNo);
+    LightObj *lightObj = LightMgr::getManager()->searchLight(viewNo + 0x53434e30);
+    MtxPtr effectMtx = lightObj->getEffectMtx();
+    mModel.setEffectMtx(effectMtx, 1);
 }
 
 bool TMapObjDemoObj::checkVisible() {
