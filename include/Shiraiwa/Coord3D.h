@@ -17,9 +17,9 @@ public:
     void setTargetPos(const JGeometry::TVec3f &, f32, f32);
     void setTargetOffset(const JGeometry::TVec3f &, f32, f32);
     void setTargetOffsetUniform(const JGeometry::TVec3f &, int);
-    void update();
-    void checkReachTarget();
-    void velUpdate(JGeometry::TVec3f &, f32, f32);
+    bool update();
+    bool checkReachTarget();
+    bool velUpdate(JGeometry::TVec3f &, f32, f32);
     void TPathMove(const CrsData::SObject *);
 
     // Inline/Unused
@@ -40,7 +40,7 @@ public:
     }
 
 private:
-    JGeometry::TVec3f mTagret;
+    JGeometry::TVec3f mTarget;
     JGeometry::TVec3f *mpPos;
     JGeometry::TVec3f *mpVel;
     bool _18;
@@ -61,7 +61,7 @@ public:
     void getNodePosition(JGeometry::TVec3f *, u16);
     u16 getNextNode();
     void updatePos();
-    void checkReachTarget();
+    bool checkReachTarget();
 
     // Inline/Unused
     void setTargetNode(f32, f32);
@@ -70,12 +70,14 @@ public:
 
 public:
     const CrsData::SObject *mpObj;  // 0x4
-    s16 _8;                         // 0x8
+    u16 _8;                         // 0x8
+    s8 _a;                          // 0xa
     JGeometry::TVec3f *mpPos;       // 0xc
     JGeometry::TVec3f *mpVel;       // 0x10
     f32 _14;                        // 0x14
     f32 _18;                        // 0x18
-    bool _1c;                       // 0x1c, 3 bytes padding
+    bool _1c;                       // 0x1c
+    bool _1d;                       // 0x1d + 2 bytes padding
     f32 _20;                        // 0x20
     //PLACEHOLDER_BYTES(0x1d, 0x24);
 }; // Size: 0x24
