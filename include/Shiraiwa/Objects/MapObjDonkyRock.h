@@ -16,7 +16,7 @@ class TMapObjDonkyRock;
 class TDonkyRockSupervisor : public GeoObjSupervisor {
 public:
     TDonkyRockSupervisor();                 // 0x8029c034
-    virtual ~TDonkyRockSupervisor();        // 0x8029c120
+    virtual ~TDonkyRockSupervisor() {}      // 0x8029c120
     virtual void reset() { return; }        // 0x8029c1c0
     virtual void calc() { return; }         // 0x8029c1c4
     virtual void thunderDownAll();          // 0x8029c0d8

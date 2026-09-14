@@ -118,6 +118,10 @@ void TMapObjDonkyRock::setObjData(const CrsData::SObject *sObject) {
     setStartVel();
 }
 
+void TMapObjDonkyRock::InitExec() { Observer_FindAndInit(TMapObjDonkyRock, 3); }
+
+void TMapObjDonkyRock::MoveExec() { Observer_FindAndExec(TMapObjDonkyRock, 3); }
+
 void TMapObjDonkyRock::calc() {
     ExecuteState();
     mRockSoundMgr->frameWork();
@@ -331,21 +335,11 @@ void TMapObjDonkyRock::doKartColCallBack(int kartIdx) {
     }
 }
 
-void TMapObjDonkyRock::MoveExec() {
-    Observer_FindAndExec(TMapObjDonkyRock, 3);
-}
-
-void TMapObjDonkyRock::InitExec() {
-    Observer_FindAndInit(TMapObjDonkyRock, 3);
-}    
-
 
 TDonkyRockSupervisor::TDonkyRockSupervisor() {
     mList.initiate();
     ItemThunder::entrySuperVisor(this);
 }
-
-TDonkyRockSupervisor::~TDonkyRockSupervisor() {}
 
 void TDonkyRockSupervisor::entry(TMapObjDonkyRock *tMapObjDonkyRock) {
     mList.append(&tMapObjDonkyRock->_170);
