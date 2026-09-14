@@ -12,7 +12,7 @@ public:
     virtual ~TMapObjDonkyRockGen();                 // 0x8029a770
     virtual void reset();                           // 0x8029a7fc
     virtual void calc();                            // 0x8029a870
-    virtual void createColModel(J3DModelData *);    // 0x8029a9b4
+    virtual void createColModel(J3DModelData *) {}  // 0x8029a9b4
     bool appearRock();                              // 0x8029a8c8
     void makeRockObject(int);                       // 0x8029a934
     // Inline

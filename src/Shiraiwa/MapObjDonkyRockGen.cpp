@@ -76,6 +76,4 @@ void TMapObjDonkyRockGen::makeRockObject(int count) {
     }
 }
 
-void TMapObjDonkyRockGen::createColModel(J3DModelData *) {}
-
 #include "JSystem/JAudio/JASFakeMatch2.h"
