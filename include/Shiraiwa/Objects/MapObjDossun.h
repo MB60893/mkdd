@@ -24,12 +24,14 @@ public:
     virtual const char *getShadowBmdFileName();
     virtual void createColModel(J3DModelData *);
     virtual void doKartColCallBack(int param_1);
-    virtual u32 getReleaseFrame() { return 100; };
+    virtual u32 getReleaseFrame();
     virtual void MoveExec();
     virtual void InitExec();
     
     void initFunc_Start();
     void doFunc_Start();
+    void initFunc_Wait();
+    void doFunc_Wait();
     void initFunc_Up();
     void doFunc_Up();
     void initFunc_Top();
@@ -43,7 +45,8 @@ public:
     void doFunc_Die();
     void shakeCamera();
     void checkItemHitting();
-    
+    void moveShadow(JGeometry::TVec3f &);
+
     static JGeometry::TVec3f sDieVelocity0;
     static const JGeometry::TVec3f scDownVelocity0;
     static StateFuncSet<TMapObjDossun> sTable[6];

@@ -13,12 +13,12 @@
 #include "mathHelper.h"
 
 StateObserver::StateFuncSet<TMapObjDossun> TMapObjDossun::sTable[6] = {
-    { 0, &TMapObjDossun::initFunc_Bottom, &TMapObjDossun::doFunc_Bottom },
-    { 1, &TMapObjDossun::initFunc_Up, &TMapObjDossun::doFunc_Up },
-    { 2, &TMapObjDossun::initFunc_Die, &TMapObjDossun::doFunc_Die },
-    { 3, &TMapObjDossun::initFunc_Start, &TMapObjDossun::doFunc_Start },
-    { 4, &TMapObjDossun::initFunc_Top, &TMapObjDossun::doFunc_Top },
-    { 5, &TMapObjDossun::initFunc_Down, &TMapObjDossun::doFunc_Down },
+    { 0, &TMapObjDossun::initFunc_Start, &TMapObjDossun::doFunc_Start },
+    { 1, &TMapObjDossun::initFunc_Top, &TMapObjDossun::doFunc_Top },
+    { 2, &TMapObjDossun::initFunc_Down, &TMapObjDossun::doFunc_Down },
+    { 3, &TMapObjDossun::initFunc_Bottom, &TMapObjDossun::doFunc_Bottom },
+    { 4, &TMapObjDossun::initFunc_Up, &TMapObjDossun::doFunc_Up },
+    { 5, &TMapObjDossun::initFunc_Die, &TMapObjDossun::doFunc_Die },
 };
 
 const JGeometry::TVec3f TMapObjDossun::scDownVelocity0(0.0f, 100.0f, 0.0f);
@@ -170,6 +170,10 @@ void TMapObjDossun::doFunc_Start() {
         setState(1);
     }
 }
+
+void TMapObjDossun::initFunc_Wait() {}
+
+void TMapObjDossun::doFunc_Wait() {}
 
 void TMapObjDossun::initFunc_Up() {
     JGeometry::TVec3f targetOffset;
@@ -326,6 +330,8 @@ void TMapObjDossun::shakeCamera() {
     ObjUtility::executeShakeCamera(mPos, 10000.0f, 0.4f, 2000.0);
 }
 
+void TMapObjDossun::moveShadow(JGeometry::TVec3f &) {}
+
 void TMapObjDossun::calc() {
     ExecuteState();
     mFreeMove.update();
@@ -344,6 +350,8 @@ void TMapObjDossun::calc() {
     }
     frameProc();
 }
+
+u32 TMapObjDossun::getReleaseFrame() { return 100; };
 
 void TMapObjDossun::checkItemHitting() {
     if (tstItemHitting()) {
