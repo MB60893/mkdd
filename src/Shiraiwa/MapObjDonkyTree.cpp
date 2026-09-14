@@ -24,6 +24,8 @@ GeoAnmTableEntry *TMapObjDonkyTree::getAnmTbl() {
     return nullptr;
 }
 
+u16 TMapObjDonkyTree::getSizeAnmTbl() { return 8; }
+
 GeoAnmTableEntry TMapObjDinoTree::sBckAnmTable = {
     0, "DinoTree1_wait.bck"
 };
@@ -57,6 +59,8 @@ GeoAnmTableEntry *TMapObjDinoTree::getAnmTbl() {
     return nullptr;
 }
 
+u16 TMapObjDinoTree::getSizeAnmTbl() { return 8; }
+
 TMapObjDesertTree::TMapObjDesertTree(const CrsData::SObject &sObject) : GeoMarioTree1(sObject) {
     clrObjFlagLODBias();
 }
@@ -74,6 +78,10 @@ const char *TMapObjDesertTree::getBmdFileName() {
     static const char *cTreeBmdName = "DesertTree1.bmd";
     return cTreeBmdName;
 }
+
+GeoAnmTableEntry *TMapObjDesertTree::getAnmTbl() { return nullptr; }
+
+u16 TMapObjDesertTree::getSizeAnmTbl() { return 0; }
 
 void TMapObjDesertTree::createColModel(J3DModelData *modelData) {
     createBoundsCylinder(modelData, 210.0f, 700.0f);

@@ -11,7 +11,7 @@ public:
     virtual ~TMapObjDonkyTree();                // 0x802ad714
     virtual const char *getBmdFileName();       // 0x802ad7b4
     virtual GeoAnmTableEntry *getAnmTbl();      // 0x802ad7dc
-    virtual u16 getSizeAnmTbl() { return 8; }   // 0x802ad80c
+    virtual u16 getSizeAnmTbl();                // 0x802ad80c
 
     static GeoAnmTableEntry sBckAnmTable;       // 0x80415290
 }; // class TMapObjDonkyTree
@@ -24,7 +24,7 @@ public:
     virtual void reset();
     virtual const char *getBmdFileName();
     virtual GeoAnmTableEntry *getAnmTbl();
-    virtual u16 getSizeAnmTbl() { return 8; }
+    virtual u16 getSizeAnmTbl();
 
     static GeoAnmTableEntry sBckAnmTable;
 }; // class TMapObjDinoTree
@@ -36,8 +36,8 @@ public:
     virtual void reset();
     virtual const char *getBmdFileName();
     virtual void createColModel(J3DModelData *);
-    virtual GeoAnmTableEntry *getAnmTbl() { return nullptr; }
-    virtual u16 getSizeAnmTbl() { return 0; }
+    virtual GeoAnmTableEntry *getAnmTbl();
+    virtual u16 getSizeAnmTbl();
 }; // class TMapObjDesertTree
 
 
