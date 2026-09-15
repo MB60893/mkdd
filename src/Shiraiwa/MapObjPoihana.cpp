@@ -29,13 +29,13 @@ TAnmInfo TMapObjPoihana::sAnmInfos[3] = {
 };
 
 StateObserver::StateFuncSet<TMapObjPoihana> TMapObjPoihana::sTable[7] = {
-    {0, &TMapObjPoihana::initFunc_Wake, &TMapObjPoihana::doFunc_Wake},
-    {1, &TMapObjPoihana::initFunc_Throw, &TMapObjPoihana::doFunc_Throw},
-    {2, &TMapObjPoihana::initFunc_Run, &TMapObjPoihana::doFunc_Run},
-    {3, &TMapObjPoihana::initFunc_Rest, &TMapObjPoihana::doFunc_Rest},
-    {4, &TMapObjPoihana::initFunc_Walk, &TMapObjPoihana::doFunc_Walk},
-    {5, &TMapObjPoihana::initFunc_Down, &TMapObjPoihana::doFunc_Down},
-    {6, &TMapObjPoihana::initFunc_Buried, &TMapObjPoihana::doFunc_Buried},
+    {0, &TMapObjPoihana::initFunc_Walk, &TMapObjPoihana::doFunc_Walk},
+    {1, &TMapObjPoihana::initFunc_Down, &TMapObjPoihana::doFunc_Down},
+    {2, &TMapObjPoihana::initFunc_Buried, &TMapObjPoihana::doFunc_Buried},
+    {3, &TMapObjPoihana::initFunc_Wake, &TMapObjPoihana::doFunc_Wake},
+    {4, &TMapObjPoihana::initFunc_Throw, &TMapObjPoihana::doFunc_Throw},
+    {5, &TMapObjPoihana::initFunc_Run, &TMapObjPoihana::doFunc_Run},
+    {6, &TMapObjPoihana::initFunc_Rest, &TMapObjPoihana::doFunc_Rest},
 };
 
 s16 TMapObjPoihana::sDownRotFrame = 30;
@@ -65,35 +65,6 @@ TPoihanaSupervisor *TMapObjPoihana::sSupervisor;
 const s8 TMapObjPoihana::sAnmTable[7] = {
     0, 1, 1, 1, 2, 0, 0
 };
-
-
-
-void TMapObjPoihana::checkItemHitting() {
-    if (tstItemHitting()) {
-        switch (mColItemObj->getKind()) {
-        case 0:
-        case 1:
-        case 2:
-        case 7:
-        case 8:
-        case 9:
-            mColPos = mColItemObj->mPos;
-            mFirstDownVel = sFirstDownVel;
-            setAnmTableState(1);
-            break;
-
-        case 3:
-        case 4:
-            if (mColItemObj->tstTransfer2()) {
-                mColPos = mColItemObj->mPos;
-                mFirstDownVel = sFirstDownVelBanana;
-                setAnmTableState(1);
-            }
-            break;
-        }
-    }
-}
-
 
 
 TMapObjPoihana::TMapObjPoihana(const CrsData::SObject &sObject) : TKartThrower(sObject), mLinkPoihana(this) {
@@ -160,6 +131,8 @@ void TMapObjPoihana::createColModel(J3DModelData *modelData) {
     JGeometry::TVec3f newColObjPos(0.0f, -yVal, 0.0f);
     setColObjPos(newColObjPos, 0);
 }
+
+void TMapObjPoihana::changeAllState(u16 value) {}
 
 void TMapObjPoihana::InitExec() { Observer_FindAndInit(TMapObjPoihana, 7); }
 
@@ -240,6 +213,33 @@ void TMapObjPoihana::calc() {
     moveShadowModel();
 }
 
+void TMapObjPoihana::changeDownState(f32) {};
+
+void TMapObjPoihana::checkItemHitting() {
+    if (tstItemHitting()) {
+        switch (mColItemObj->getKind()) {
+        case 0:
+        case 1:
+        case 2:
+        case 7:
+        case 8:
+        case 9:
+            mColPos = mColItemObj->mPos;
+            mFirstDownVel = sFirstDownVel;
+            setAnmTableState(1);
+            break;
+
+        case 3:
+        case 4:
+            if (mColItemObj->tstTransfer2()) {
+                mColPos = mColItemObj->mPos;
+                mFirstDownVel = sFirstDownVelBanana;
+                setAnmTableState(1);
+            }
+            break;
+        }
+    }
+}
 
 void TMapObjPoihana::doKartColCallBack(int kartNo) {
     switch (getState()) {
@@ -296,6 +296,8 @@ void TMapObjPoihana::ignoreKart(int idx) {
     mTargetableKarts[idx] = sKartIgnoreFrame;
 }
 
+void TMapObjPoihana::ignoreUpdate() {}
+
 void TMapObjPoihana::clearAllIgnore() {
     for (int i = 0; i < 8; i++) {
         mTargetableKarts[i] = 0;
@@ -312,7 +314,7 @@ void TMapObjPoihana::initFunc_Walk() {
 void TMapObjPoihana::doFunc_Walk() {
     updatePosition();
     checkItemHitting();
-    changeDownState(1);
+    subtractTargetable(1);
     changeSpeedForWater(1.0f, 1.0f);
 
     int nearestKart = searchKart();
@@ -353,7 +355,7 @@ void TMapObjPoihana::changeSpeedForWater(f32 xSpeed, f32 ySpeed) {
 
 int TMapObjPoihana::searchKart() {
     int kartIndex = -1;
-    changeDownState(1);
+    subtractTargetable(1);
 
     if (mKartSearchCounter < sReSearchFrame) {
         mKartSearchCounter++;
@@ -555,7 +557,7 @@ void TMapObjPoihana::doFunc_Run() {
     mPathWalk->_88->_14.set(target);
 
     changeSpeedForWater(sRunSpeedRatio, sRunRotRatio);
-    changeDownState(1);
+    subtractTargetable(1);
     updatePosition();
     checkItemHitting();
 
@@ -625,7 +627,7 @@ void TMapObjPoihana::doFunc_Rest() {
 
     if (getStateCount() > sKartIgnoreFrame) {
         setAnmTableState(0);
-        changeAllState(0);
+        resetTargetable();
     }
 }
 
@@ -654,6 +656,7 @@ void TMapObjPoihana::getThrowDir(JGeometry::TVec3f *throwDir, s16 param_2) {
     throwDir->set(newThrowDir);
 }
 
+void TMapObjPoihana::thunderDown() {}
 
 
 TPoihanaSupervisor::TPoihanaSupervisor() {

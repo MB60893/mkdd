@@ -99,22 +99,27 @@ public:
 
     // Inline/Unused
     // void JSULink<TMapObjPoihana>::~JSULink();
-    void changeAllState(u16 value) {
-        for (int i = 0; i < 8; i++) {
-            mTargetableKarts[i] = 0;
-        }
-    }
+    void changeAllState(u16 value);
+    void changeDownState(f32 value);
+    void checkItemHitting();
 
-    void changeDownState(u16 value) {
+    // MJB - Fabricated:
+    void subtractTargetable(u16 value) {
         for (int i = 0; i < 8; i++) {
             if (mTargetableKarts[i] != 0) {
                 mTargetableKarts[i] -= value;
             }
         }
-    };
-    void checkItemHitting();
-    // void ignoreUpdate();
-    // void thunderDown();
+    }
+
+    void resetTargetable() {
+        for (int i = 0; i < 8; i++) {
+            mTargetableKarts[i] = 0;
+        }
+    }
+
+    void ignoreUpdate();
+    void thunderDown();
     // void SUList<TMapObjPoihana>::~JSUList();
     // void scHeightOffset;
     // void scColorTypeNum;
