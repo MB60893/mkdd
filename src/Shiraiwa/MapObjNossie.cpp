@@ -62,8 +62,6 @@ TAnmInfo TMapObjNossie::sAnmInfosTA[1] = {
 };
 
 
-
-
 const u32 TMapObjNossie::scNossieEffectAppearPos[16] = {
     2, 1, 0, 3,
     2, 1, 0, 3,
@@ -72,18 +70,6 @@ const u32 TMapObjNossie::scNossieEffectAppearPos[16] = {
 };
 
 s32 TMapObjNossie::sHeadJointNo;
-J3DAnmTransform *TMapObjSwimNossie::sSwimNossieBckAnmTrans;
-J3DMtxCalc *TMapObjSwimNossie::sSwimNossieBckMtxCalc;
-J3DAnmTexPattern *TMapObjSwimNossie::sSwimNossieBtpAnm;
-
-f32 TMapObjNossieColFoot::sShakeRadius = 10000.0f;
-f32 TMapObjSwimNossie::sMoveMaxSpeed = 5.0f;
-f32 TMapObjSwimNossie::sMoveAccel = 0.02f;
-f32 TMapObjSwimNossie::sReachLength = 500.0f;
-f32 TMapObjPtera::sMoveMaxSpeed = 30.0f;
-f32 TMapObjPtera::sMoveAccel = 0.5f;
-f32 TMapObjPtera::sReachLength = 2000.0f;
-
 
 
 TMapObjNossie::TMapObjNossie(const CrsData::SObject &sObject) : TMapObjHioNode(sObject) {
@@ -121,10 +107,26 @@ TMapObjNossie::TMapObjNossie(const CrsData::SObject &sObject) : TMapObjHioNode(s
     }
 }
 
+TMapObjNossie::~TMapObjNossie() {}
+
 const char *TMapObjNossie::getBmdFileName() {
     static const char *cBmdName = "/Objects/Nossie.bmd";
     return cBmdName;
 }
+
+
+J3DAnmTransform *TMapObjSwimNossie::sSwimNossieBckAnmTrans;
+J3DMtxCalc *TMapObjSwimNossie::sSwimNossieBckMtxCalc;
+J3DAnmTexPattern *TMapObjSwimNossie::sSwimNossieBtpAnm;
+
+f32 TMapObjNossieColFoot::sShakeRadius = 10000.0f;
+f32 TMapObjSwimNossie::sMoveMaxSpeed = 5.0f;
+f32 TMapObjSwimNossie::sMoveAccel = 0.02f;
+f32 TMapObjSwimNossie::sReachLength = 500.0f;
+f32 TMapObjPtera::sMoveMaxSpeed = 30.0f;
+f32 TMapObjPtera::sMoveAccel = 0.5f;
+f32 TMapObjPtera::sReachLength = 2000.0f;
+
 
 void TMapObjNossie::createModel(JKRSolidHeap *heap, u32 p2) {
     mModel.createModel(heap, p2, 0);
@@ -305,6 +307,8 @@ void TMapObjNossieColBase::reset() {
     _58 = getReaction();
 }
 
+void TMapObjNossieColBase::calc() {}
+
 void TMapObjNossieColHead::createColModel(J3DModelData *modelData) {
     createBoundsSphere(620.0f, mScale.y);
 }
@@ -316,6 +320,8 @@ void TMapObjNossieColHead::calc() {
 void TMapObjNossieColBody::createColModel(J3DModelData *modelData) {
     createBoundsCylinder(1500.0f, 1900.0f, mScale.y);
 }
+
+u32 TMapObjNossieColFoot::getReleaseFrame() { return 0x1e; }
 
 void TMapObjNossieColFoot::reset() {
     resetFrame();

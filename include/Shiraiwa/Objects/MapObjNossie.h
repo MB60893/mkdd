@@ -17,7 +17,7 @@ public:
     TMapObjNossieColBase(const CrsData::SObject &sObject, u32 id) : TMapObjStamper(id) {}
     virtual ~TMapObjNossieColBase() {}
     virtual void reset();
-    virtual void calc() {}
+    virtual void calc();
     virtual int getReaction() { return 3; }
     void createColModel(J3DModelData *) = 0;
 };
@@ -46,7 +46,7 @@ public:
         createSoundMgr();
     }
     virtual ~TMapObjNossieColFoot() {}
-    virtual u32 getReleaseFrame() { return 0x1e; }
+    virtual u32 getReleaseFrame();
     virtual void reset();
     virtual void createColModel(J3DModelData *);
     bool isStepped(int);
@@ -132,7 +132,7 @@ public:
 class TMapObjNossie : public TMapObjHioNode {
 public:
     TMapObjNossie(const CrsData::SObject &);                // 0x802c571c
-    virtual ~TMapObjNossie() {}                             // 0x802c5884
+    virtual ~TMapObjNossie();                               // 0x802c5884
     virtual const char *getBmdFileName();                   // 0x802c5924
     virtual void createModel(JKRSolidHeap *, u32);          // 0x802c594c
     virtual void loadAnimation();                           // 0x802c5a20
