@@ -59,6 +59,8 @@ const s8 TMapObjGeyser::sAnmTable[6] = {
     5, 5, 0, 1, 2, 3
 };
 
+
+
 inline void TMapObjGeyser::createEmitter(int idx) {
     if (getEmitter(idx) == nullptr) {
         JPABaseEmitter *emt = JPEffectMgr::getEffectMgr()->createEmt(scEffectName[idx], mPos);
@@ -77,8 +79,8 @@ inline void TMapObjGeyser::createEmitter(int idx) {
 
 inline void TMapObjGeyser::setAnimation(int idx) {
     setState(idx);
-    // HACK: sAnmTable may have the wrong type based on these casts...
-    if ((u32)sAnmTable[idx] != 5 && (u32)sAnmTable[idx] != mAnmPlayer.getCurAnmNumber()) {
+    u32 anmTable = sAnmTable[idx];
+    if (anmTable != 5 && anmTable != mAnmPlayer.getCurAnmNumber()) {
         mAnmPlayer._11 = sAnmTable[idx];
         mAnmPlayer._10 = 1;
         mAnmPlayer._e |= 1;
@@ -135,6 +137,13 @@ void TMapObjGeyser::loadAnimation() {
     void *ptrCourseArc = ObjUtility::getPtrCourseArc("/Objects/Geyser1.btk");
     J3DAnmObjMaterial::setupTexSRTAnmData(&sGeyserBtkAnm, modelData, ptrCourseArc);
 }
+
+JPABaseEmitter *TMapObjGeyser::getEmitter(u32 idx) {
+    return _1a0[idx];
+}
+bool TMapObjGeyser::isActiveEmitter(u32 idx) {
+    return _1a0[idx]->checkStatus(1);
+};
 
 void TMapObjGeyser::playEmitter(u32 id, const JGeometry::TVec3f &pos) {
     bool valid = true;
@@ -232,6 +241,18 @@ void TMapObjGeyser::moveEmitter(u32 id, const JGeometry::TVec3f &pos) {
     getEmitter(id)->setGlobalTranslation(pos);
 }
 
+void TMapObjGeyser::stopEmitter(u32 idx) {
+    _1a0[idx]->stopCreateParticle();
+}
+
+void TMapObjGeyser::hideEmitter(u32) {}
+
+void TMapObjGeyser::showEmitter(u32 idx) {
+    _1a0[idx]->playCreateParticle();
+}
+
+void TMapObjGeyser::getEmitterPos(JGeometry::TVec3f *) {}
+
 void TMapObjGeyser::update() {
     mAnmObjMaterial.anmFrameProc();
     GeographyObj::update();
@@ -267,6 +288,8 @@ void TMapObjGeyser::reset() {
     _1c4 = -sBoundHeight;
     _1b8.zero();
 }
+
+void TMapObjGeyser::changeAllState(u16) {}
 
 void TMapObjGeyser::calc() {
     MtxPtr anmMtx = mModel.getModel()->getAnmMtx(sJointNum);
@@ -356,7 +379,6 @@ void TMapObjGeyser::initFunc_Wait() {
 }
 
 void TMapObjGeyser::doFunc_Wait() {
-    // FIX: What inline function/datatype actually exists at 0xa4?
     if (checkChangeAct() != 0) {
         setAnimation(2);
     }

@@ -61,13 +61,15 @@ public:
     inline void setAnimation(int);
 
     // Inline/Unused
-    JPABaseEmitter *getEmitter(u32 idx) { return _1a0[idx]; }
-    bool isActiveEmitter(u32 idx) { return _1a0[idx]->checkStatus(1); };
-    void stopEmitter(u32 idx) { _1a0[idx]->stopCreateParticle(); }
-    // void hideEmitter(u32);
-    void showEmitter(u32 idx) { _1a0[idx]->playCreateParticle(); }
-    // void getEmitterPos(JGeometry::TVec3f *);
-    // void changeAllState(u16);
+    JPABaseEmitter *getEmitter(u32 idx);
+    bool isActiveEmitter(u32 idx);
+    void stopEmitter(u32 idx);
+    void showEmitter(u32 idx);
+    void hideEmitter(u32);
+    void getEmitterPos(JGeometry::TVec3f *);
+    void changeAllState(u16);
+
+
     //void sTopStayTime;
     //void sLimitUpVel;
     //void sGravity;
