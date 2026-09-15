@@ -18,20 +18,21 @@ class TMapObjSkyShip : public TMapObjHioNode {
 public:
     TMapObjSkyShip(const CrsData::SObject &sObject);        // 0x80298b48
     virtual ~TMapObjSkyShip();                              // 0x80298c30
-    virtual ShadowModel::ShadowKind getShadowKind() const { // 0x8029a3dc
-        return ShadowModel::cShadowKind_SkyShip;
-    }
     virtual void reset();                                   // 0x80298d04
     virtual void calc();                                    // 0x80298f60
     virtual const char *getBmdFileName();                   // 0x80298f10
     virtual const char *getShadowBmdFileName();             // 0x80298f38
     virtual void createColModel(J3DModelData *) {}          // 0x8029a3d8
+    virtual ShadowModel::ShadowKind getShadowKind() const { // 0x8029a3dc
+        return ShadowModel::cShadowKind_SkyShip;
+    }
     virtual f32 getAmplitude() { return sAmplitude; }       // 0x80299258
     virtual s16 getAmpTimer() { return sAmpTimer; }         // 0x80299260
     void moveShadowRot();                                   // 0x802990bc
     void getNodeDir(u16, JGeometry::TVec3f *);              // 0x80299170
     void localMove();                                       // 0x802991cc
-    
+
+    void aimFront();
 
     static f32 sAmplitude;                                  // 0x80415198
     static s16 sAmpTimer;                                   // 0x8041519c
@@ -97,8 +98,8 @@ public:
     virtual ~TMapObjUFO();                                              // 0x80299c9c
     virtual void reset();                                               // 0x80299dac
     virtual void calc();                                                // 0x80299f68
-    virtual const char *getBmdFileName() { return "/Objects/ufo.bmd"; } // 0x8029a2c0
     virtual void createColModel(J3DModelData *) {}                      // 0x8029a2bc
+    virtual const char *getBmdFileName() { return "/Objects/ufo.bmd"; } // 0x8029a2c0
     virtual void MoveExec();                                            // 0x80299efc
     virtual void InitExec();                                            // 0x80299e90
     void initFunc_Fly();                                                // 0x80299fc4

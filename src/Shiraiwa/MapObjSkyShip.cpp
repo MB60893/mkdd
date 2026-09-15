@@ -21,8 +21,6 @@ StateObserver::StateFuncSet<TMapObjUFO> TMapObjUFO::sTable[2] = {
     { 1, &TMapObjUFO::initFunc_Wait, &TMapObjUFO::doFunc_Wait },
 };
 
-J3DAnmTextureSRTKey *TMapObjPathYoshiHeli::sPathYoshiHeliBtkAnm;
-
 f32 TMapObjSkyShip::sAmplitude = 300.0f;
 s16 TMapObjSkyShip::sAmpTimer = 100;
 f32 TMapObjPathYoshiHeli::sAmplitude = 5.0f;
@@ -33,6 +31,7 @@ s16 TMapObjMashBalloon::sAmpTimer = 100;
 f32 TMapObjUFO::sRotRad = 0.06;
 f32 TMapObjUFO::sFlySpeed = 500.0f;
 s16 TMapObjUFO::sWaitFrame = 120;
+
 
 TMapObjSkyShip::TMapObjSkyShip(const CrsData::SObject &sObject) : TMapObjHioNode(sObject) {
 #line 28
@@ -94,6 +93,8 @@ const char *TMapObjSkyShip::getShadowBmdFileName() {
     return cShadowBmdName;
 }
 
+J3DAnmTextureSRTKey *TMapObjPathYoshiHeli::sPathYoshiHeliBtkAnm;
+
 void TMapObjSkyShip::calc() {
     if (mObjData->mPathID != 0xffff) {
         mPos.y = _154;
@@ -142,6 +143,8 @@ void TMapObjSkyShip::getNodeDir(u16 param_1, JGeometry::TVec3f *dir) {
     mPathMove->getNodePosition(&nodePos, param_1);
     dir->sub(nodePos, mPos);
 }
+
+void TMapObjSkyShip::aimFront() {}
 
 void TMapObjSkyShip::localMove() {
     f32 offset = getAmplitude() * JMASSin(_14c);
@@ -297,8 +300,6 @@ TMapObjUFO::TMapObjUFO(const CrsData::SObject &sObject) : TMapObjHioNode(sObject
 TMapObjUFO::~TMapObjUFO() {
     delete mPathUtil;
 }
-
-TPathUtil::~TPathUtil() {}
 
 void TMapObjUFO::reset() {
     GeographyObj::resetObject();

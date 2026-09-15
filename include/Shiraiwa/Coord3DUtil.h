@@ -12,7 +12,7 @@ class TPathUtil {
 public:
     TPathUtil();
     TPathUtil(const CrsData::SObject *);
-    virtual ~TPathUtil();
+    virtual ~TPathUtil() {}
 
     virtual void reset();
     void getDirection(JGeometry::TVec3f& out);

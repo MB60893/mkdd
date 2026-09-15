@@ -22,8 +22,6 @@ TPathUtil::TPathUtil(const CrsData::SObject *sObject) {
 
 TPathUtil::TPathUtil() {}
 
-TPathUtil::~TPathUtil() {}
-
 void TPathUtil::reset() {
     mDistanceDirty = true;
     mDistance = 0.0f;
