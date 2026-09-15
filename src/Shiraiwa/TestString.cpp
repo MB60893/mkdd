@@ -220,9 +220,16 @@ void TTestStrItem::createColModel(J3DModelData *modelData) {
     GeographyObj::createBoundsSphere(150.0f, 1.0f);
 }
 
+TTestStrSupervisor::TTestStrSupervisor() : GeoObjSupervisor() {
+    _24.initiate();
+    _30 = new JUTTexture();
+};
+
 TTestStrSupervisor::~TTestStrSupervisor() {
     delete _30;
 }
+
+void TTestStrSupervisor::entry(TTestString *testString) {}
 
 void TTestStrSupervisor::drawAll(u32 param_1) {
     GXColor white = {0xff, 0xff, 0xff, 0xff};
@@ -455,5 +462,10 @@ void TTestString::setParameters() {
 }
 
 void TTestString::createModel(JKRSolidHeap *, u32) {}
+
+// Unused:
+void TTestStringObj::calc() {}
+
+TTestStringObj::~TTestStringObj() {}
 
 #include "JSystem/JAudio/JASFakeMatch2.h"

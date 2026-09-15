@@ -58,10 +58,7 @@ public:
 
 class TTestStrSupervisor : public GeoObjSupervisor {
 public:
-    TTestStrSupervisor() : GeoObjSupervisor() {
-        _24.initiate();
-        _30 = new JUTTexture();
-    };
+    TTestStrSupervisor();
     virtual ~TTestStrSupervisor();
     virtual void reset() {}
     virtual void calc() {}
@@ -125,5 +122,11 @@ public:
     JGeometry::TVec3f _18c[3];              // 0x18c
 
 }; // class TestString
+
+// Unused:
+class TTestStringObj {
+    virtual ~TTestStringObj();
+    virtual void calc();
+};
 
 #endif // TESTSTRING_H
