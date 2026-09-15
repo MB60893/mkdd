@@ -12,7 +12,10 @@ public:
     virtual ~TSmallAnimal();
     virtual void reset();
     virtual const char *getBmdFileName() { return NULL; }   // 0x802a5e40
-    virtual void setOrigin(JGeometry::TVec3f *);            // 0x802a5e18
+    virtual void setOrigin(JGeometry::TVec3f *newOrigin) {  // 0x802a5e18
+        mSmallAnimalPos = newOrigin;
+        mPos.set(*mSmallAnimalPos);
+    };
 
     JGeometry::TVec3f *mSmallAnimalPos;
 };
@@ -23,11 +26,11 @@ public:
     TSmallAnimalGen(const CrsData::SObject &, u32); // 0x802a5c24
     virtual ~TSmallAnimalGen();                     // 0x802a5ca8
     virtual void reset();                           // 0x802a5d88
-    virtual void calc();                            // 0x802a5e3c
+    virtual void calc() {}                          // 0x802a5e3c
     void makeObjects(u16);                          // 0x802a5d8c
 
     // Inline/Unused
-    // void getNthObject(unsigned short);
+    void getNthObject(u16);
 
     TSmallAnimal **_14c;    // GeographyObj **, maybe?
     u16 _150;

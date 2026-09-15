@@ -3,6 +3,17 @@
 #include "Shiraiwa/Objects/MapObjHioNode.h"
 #include "Shiraiwa/SmallAnimalGen.h"
 
+TSmallAnimal::TSmallAnimal(u32 id) : TMapObjHioNode(id) {
+    mSmallAnimalPos = nullptr;
+    clrAllCheckKartHitFlag();
+    clrObjFlagCheckItemHitting();
+}
+
+TSmallAnimal::~TSmallAnimal() {}
+
+void TSmallAnimal::reset() {
+    resetObject();
+}
 
 TSmallAnimalGen::TSmallAnimalGen(const CrsData::SObject &sObject, u32 id) : TMapObjHioNode(sObject) {
     u16 objectCount = sObject.mParam1;
@@ -24,7 +35,7 @@ TSmallAnimalGen::~TSmallAnimalGen() {
 
 void TSmallAnimalGen::reset() {}
 
-void TSmallAnimalGen::calc() {}
+void TSmallAnimalGen::getNthObject(u16) {}
 
 void TSmallAnimalGen::makeObjects(u16 objCount) {
     _150 = objCount;
@@ -36,22 +47,5 @@ void TSmallAnimalGen::makeObjects(u16 objCount) {
     }
 }
 
-
-TSmallAnimal::TSmallAnimal(u32 id) : TMapObjHioNode(id) {
-    mSmallAnimalPos = nullptr;
-    clrAllCheckKartHitFlag();
-    clrObjFlagCheckItemHitting();
-}
-
-TSmallAnimal::~TSmallAnimal() {}
-
-void TSmallAnimal::reset() {
-    resetObject();
-}
-
-void TSmallAnimal::setOrigin(JGeometry::TVec3f *newOrigin) {
-    mSmallAnimalPos = newOrigin;
-    mPos.set(*mSmallAnimalPos);
-}
 
 #include "JSystem/JAudio/JASFakeMatch2.h"
