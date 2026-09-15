@@ -15,9 +15,9 @@
 #include "mathHelper.h"
 
 StateObserver::StateFuncSet<TMapObjSnowRock> TMapObjSnowRock::sTable[3] = {
-    0, &TMapObjSnowRock::initFunc_Break, &TMapObjSnowRock::doFunc_Break,
-    1, &TMapObjSnowRock::initFunc_Die, &TMapObjSnowRock::doFunc_Die,
-    2, &TMapObjSnowRock::initFunc_Stand, &TMapObjSnowRock::doFunc_Stand
+    { 0, &TMapObjSnowRock::initFunc_Stand, &TMapObjSnowRock::doFunc_Stand },
+    { 1, &TMapObjSnowRock::initFunc_Break, &TMapObjSnowRock::doFunc_Break },
+    { 2, &TMapObjSnowRock::initFunc_Die, &TMapObjSnowRock::doFunc_Die, }
 };
 
 f32 TMapObjSnowRock::sGravity = 0.01f;
@@ -33,6 +33,8 @@ void TSnowRockSupervisor::calc() {
         }
     }
 }
+
+void TSnowRockSupervisor::entry(TMapObjSnowRock *) {}
 
 TMapObjSnowRock::TMapObjSnowRock(const CrsData::SObject &sObject) : TMapObjHioNode(sObject), JKRDisposer(), _170(this) {
     setObjFlagSimpleDraw();

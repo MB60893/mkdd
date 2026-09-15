@@ -19,7 +19,7 @@ public:
     virtual ~TSnowRockSupervisor() {}
     virtual void reset() {}
     virtual void calc();
-    //void entry(TMapObjSnowRock *);
+    void entry(TMapObjSnowRock *);
 
     JSUList<TMapObjSnowRock> _24;
 };
