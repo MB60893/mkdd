@@ -38,6 +38,7 @@ public:
 
 
 class TMapObjMareWBase : public TMapObjDemoObj {
+public:
     TMapObjMareWBase(const CrsData::SObject &);
     virtual ~TMapObjMareWBase();
     virtual void reset();
@@ -52,6 +53,7 @@ class TMapObjMareWBase : public TMapObjDemoObj {
 };
 
 class TMapObjMareM_A : public TMapObjDemoObj {
+public:
     TMapObjMareM_A(const CrsData::SObject &);
     virtual ~TMapObjMareM_A();
     virtual void reset();
