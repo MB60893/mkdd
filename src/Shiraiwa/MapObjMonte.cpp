@@ -122,7 +122,7 @@ void TMapObjUkleleMonte::reset() {
 
 void TMapObjUkleleMonte::loadAnimation() {
     J3DModelData *modelData = mModel.getModelData();
-    J3DAnmObjTrans::setupTransAnmData(&sUkMonteBckAnmTrans, &sUkMonteBckMtxCalc, modelData, ObjUtility::getPtrCourseArc("/Objects/uklele_monte.bck"));
+    mAnmObjTrans->setupTransAnmData(&sUkMonteBckAnmTrans, &sUkMonteBckMtxCalc, modelData, ObjUtility::getPtrCourseArc("/Objects/uklele_monte.bck"));
     for (u16 i = 0; i < modelData->getShapeNum(); i++) {
         modelData->getShapeNodePointer(i)->setTexMtxLoadType(0x2000);
     }

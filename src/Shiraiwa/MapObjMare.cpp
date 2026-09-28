@@ -1,12 +1,6 @@
 #include "Shiraiwa/Objects/MapObjMare.h"
-#include "Osako/ResMgr.h"
-#include "Sato/AnmController.h"
-#include "Sato/J3DAnmObject.h"
 #include "Sato/ObjUtility.h"
-#include "Sato/StateObserver.h"
-#include "Shiraiwa/Objects/MapObjDemoObj.h"
 #include "Shiraiwa/SiUtil.h"
-
 
 TAnmInfo TMapObjMareBase::sAnmInfos[2] = {
     { "/Objects/mareL_a_bye1.bck", nullptr, nullptr, 2, 10, 0, 1, 0 },
@@ -118,7 +112,7 @@ void TMapObjMareWBase::reset() {
 
 void TMapObjMareWBase::loadAnimation() {
     J3DModelData *modelData = mModel.getModelData();
-    J3DAnmObjTrans::setupTransAnmData(&sMareWBckAnmTrans, &sMareWBckMtxCalc, modelData, ObjUtility::getPtrCourseArc("/Objects/mareW_a_dance.bck"));
+    mAnmObjTrans->setupTransAnmData(&sMareWBckAnmTrans, &sMareWBckMtxCalc, modelData, ObjUtility::getPtrCourseArc("/Objects/mareW_a_dance.bck"));
     for (u16 i = 0; i < modelData->getShapeNum(); i++) {
         modelData->getShapeNodePointer(i)->setTexMtxLoadType(0x2000);
     }
@@ -157,14 +151,14 @@ void TMapObjMareM_A::reset() {
 
 void TMapObjMareM_A::loadAnimation() {
     J3DModelData *modelData = mModel.getModelData();
-    J3DAnmObjTrans::setupTransAnmData(&sMareMBckAnmTrans, &sMareMBckMtxCalc, modelData, ObjUtility::getPtrCourseArc("/Objects/mareM_a.bck"));
+    mAnmObjTrans->setupTransAnmData(&sMareMBckAnmTrans, &sMareMBckMtxCalc, modelData, ObjUtility::getPtrCourseArc("/Objects/mareM_a.bck"));
     for (u16 i = 0; i < modelData->getShapeNum(); i++) {
         modelData->getShapeNodePointer(i)->setTexMtxLoadType(0x2000);
     }
 }
 
 void TMapObjMareM_A::createModel(JKRSolidHeap *heap, u32 p2) {
-        mModel.createDifferedModel(heap, p2, 0x1000200, 1);
+    mModel.createDifferedModel(heap, p2, 0x1000200, 1);
 
     AnmController *anmCtrl = getAnmCtrl();
     anmCtrl->mTrans = new AnmControlTrans();

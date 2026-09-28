@@ -4,6 +4,7 @@
 #include "JSystem/J3D/J3DMtxCalc.h"
 #include "JSystem/JKernel/JKRHeap.h"
 #include "Kaneshige/Course/CrsData.h"
+#include "Sato/J3DAnmObject.h"
 #include "Sato/StateObserver.h"
 #include "Shiraiwa/AnmPlayer.h"
 #include "Shiraiwa/Objects/MapObjDemoObj.h"
@@ -19,7 +20,7 @@ public:
     virtual void loadAnimation();
     virtual void createModel(JKRSolidHeap *, u32);
     virtual void calc();
-    virtual const char *getShadowBmdFileName();
+    virtual const char *getShadowBmdFileName() { return "/Objects/monL_a_sh.bmd"; }
     virtual const char *getBmdFileName() = 0;
     void initFunc_Clapping();
     void doFunc_Clapping();
@@ -37,6 +38,36 @@ public:
     f32 _190;                           // 0x190
 };
 
+class TMapObjMonteA : public TMapObjMonteBase {
+public:
+    TMapObjMonteA(const CrsData::SObject &sObject) : TMapObjMonteBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/monL_a.bmd"; };
+};
+
+class TMapObjMonteB : public TMapObjMonteBase {
+public:
+    TMapObjMonteB(const CrsData::SObject &sObject) : TMapObjMonteBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/monL_b.bmd"; };
+};
+
+class TMapObjMonteC : public TMapObjMonteBase {
+public:
+    TMapObjMonteC(const CrsData::SObject &sObject) : TMapObjMonteBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/monL_c.bmd"; };
+};
+
+class TMapObjMonteD : public TMapObjMonteBase {
+public:
+    TMapObjMonteD(const CrsData::SObject &sObject) : TMapObjMonteBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/monL_d.bmd"; };
+};
+
+class TMapObjMonteE : public TMapObjMonteBase {
+public:
+    TMapObjMonteE(const CrsData::SObject &sObject) : TMapObjMonteBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/monL_e.bmd"; };
+};
+
 class TMapObjUkleleMonte : public TMapObjDemoObj {
 public:
     TMapObjUkleleMonte(const CrsData::SObject &);
@@ -51,7 +82,7 @@ public:
     static J3DAnmTransform *sUkMonteBckAnmTrans;
     static J3DMtxCalc *sUkMonteBckMtxCalc;
 
-    
+    J3DAnmObjTrans *mAnmObjTrans;
 };
 
 class TMapObjDanceMonte : public TMapObjDemoObj {
@@ -62,7 +93,7 @@ public:
     virtual void loadAnimation();
     virtual void createModel(JKRSolidHeap *, u32);
     virtual void calc();
-    virtual const char *getShadowBmdFileName();
+    virtual const char *getShadowBmdFileName() { return "/Objects/monL_a_sh.bmd"; }
     virtual const char *getBmdFileName() = 0;
 
 
@@ -70,6 +101,18 @@ public:
     
 
     TAnmPlayer mAnmPlayer;          // 0x16c
+};
+
+class TMapObjDanceMonteA : public TMapObjDanceMonte {
+public:
+    TMapObjDanceMonteA(const CrsData::SObject &sObject) : TMapObjDanceMonte(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/monF_a.bmd"; }
+};
+
+class TMapObjDanceMonteB : public TMapObjDanceMonte {
+public:
+    TMapObjDanceMonteB(const CrsData::SObject &sObject) : TMapObjDanceMonte(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/monF_b.bmd"; }
 };
 
 #endif // MAPOBJMONTE_H

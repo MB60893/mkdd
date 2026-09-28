@@ -24,6 +24,8 @@ public:
     static const u32 scCameraID[11];                // 0x80385410, firsparkfrondownfarrmontmareitemtoppenddnext
     static f32 sTurnSpeed;                          // 0x80415478
 
+    inline f32 getKartDistanceSq() { return mKartDistanceSq; }
+
     // Inline/Unused
     //void scTargetKartRank;
     //void scCheckInterval;

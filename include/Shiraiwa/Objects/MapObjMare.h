@@ -17,7 +17,7 @@ public:
     virtual void loadAnimation();
     virtual void createModel(JKRSolidHeap *, u32);
     virtual void calc();
-    virtual const char *getShadowBmdFileName();
+    virtual const char *getShadowBmdFileName() { return "/Objects/mareL_a_sh.bmd"; }
     virtual const char *getBmdFileName() = 0;
     void initFunc_Clapping();
     void doFunc_Clapping();
@@ -36,6 +36,23 @@ public:
 
 }; // class MapObjMareBase
 
+class TMapObjMareA : public TMapObjMareBase {
+public:
+    TMapObjMareA(const CrsData::SObject &sObject) : TMapObjMareBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/mareL_a.bmd"; }
+};
+
+class TMapObjMareB : public TMapObjMareBase {
+public:
+    TMapObjMareB(const CrsData::SObject &sObject) : TMapObjMareBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/mareL_b.bmd"; }
+};
+
+class TMapObjMareC : public TMapObjMareBase {
+public:
+    TMapObjMareC(const CrsData::SObject &sObject) : TMapObjMareBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/mareL_c.bmd"; }
+};
 
 class TMapObjMareWBase : public TMapObjDemoObj {
 public:
@@ -45,12 +62,33 @@ public:
     virtual void loadAnimation();
     virtual void createModel(JKRSolidHeap *, u32);
     virtual void calc();
-    virtual const char *getShadowBmdFileName();
+    virtual const char *getShadowBmdFileName() { return "/Objects/mareL_a_sh.bmd"; }
     virtual const char *getBmdFileName() = 0;
 
     static J3DAnmTransform *sMareWBckAnmTrans;
     static J3DMtxCalc *sMareWBckMtxCalc;
+
+    J3DAnmObjTrans *mAnmObjTrans;
 };
+
+class TMapObjMareW_A : public TMapObjMareWBase {
+public:
+    TMapObjMareW_A(const CrsData::SObject &sObject) : TMapObjMareWBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/mareW_a.bmd"; }
+};
+
+class TMapObjMareW_B : public TMapObjMareWBase {
+public:
+    TMapObjMareW_B(const CrsData::SObject &sObject) : TMapObjMareWBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/mareW_b.bmd"; }
+};
+
+class TMapObjMareW_C : public TMapObjMareWBase {
+public:
+    TMapObjMareW_C(const CrsData::SObject &sObject) : TMapObjMareWBase(sObject) {}
+    virtual const char *getBmdFileName() { return "/Objects/mareW_c.bmd"; }
+};
+
 
 class TMapObjMareM_A : public TMapObjDemoObj {
 public:
@@ -65,6 +103,8 @@ public:
 
     static J3DAnmTransform *sMareMBckAnmTrans;
     static J3DMtxCalc *sMareMBckMtxCalc;
+
+    J3DAnmObjTrans *mAnmObjTrans;
 };
 
  #endif // MAPOBJMARE_H
