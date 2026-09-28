@@ -46,14 +46,13 @@ public:
 
     TFreeFallShakeSky *mFreeFallShakeSky;           // 0x214
     JPABaseEmitter *mEmitter[2];                    // 0x218
-    JGeometry::TVec3f pos;                          // 0x220
-    JGeometry::TVec3f vel;                          // 0x22c
-
 }; // class MapObjMoveItemBox
 
 class TMapObjMoveItemBoxLimit : public TMapObjMoveItemBox {
 public:
-    TMapObjMoveItemBoxLimit(const CrsData::SObject &sObject) : TMapObjMoveItemBox(sObject) {}
+    TMapObjMoveItemBoxLimit(const CrsData::SObject &sObject) : TMapObjMoveItemBox(sObject) {
+        createSoundMgr();
+    }
     virtual ~TMapObjMoveItemBoxLimit() {}                       // 0x802be254
     virtual void reset();
     virtual void move();
@@ -61,8 +60,11 @@ public:
     virtual void doKartColCallBack(int);
     virtual void calc();
     virtual void resetPosition() {}                             // 0x802be250
-    
+
     static f32 sGravitySize;
+
+    JGeometry::TVec3f pos;
+    JGeometry::TVec3f vel;
 };
 // Outside class members
 #endif // MAPOBJMOVEITEMBOX_H
