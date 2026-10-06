@@ -156,6 +156,7 @@ public:
     void setObjFlagShadow() { mObjFlag |= 8; }
     void setObjFlagNoCollision() { mObjFlag |= 0x80; }
     void setObjFlagLODBias() { mObjFlag |= 0x100; }
+    void setObjFlagAwardCup() { mObjFlag |= 0x400; }
     void setObjFlagHidding() { mGeoObjFlag |= 0x20; }
 
     void setAllCheckKartHitFlag() { mCheckKartHitFlags = 0xffffffff; }

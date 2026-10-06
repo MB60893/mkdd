@@ -26,6 +26,9 @@ public:
 
     inline f32 getKartDistanceSq() { return mKartDistanceSq; }
 
+    void setDemoFlag(u32 newFlags) { mDemoFlags |= newFlags; }
+    void clrDemoFlag(u32 newFlags) { mDemoFlags &= ~newFlags; }
+
     // Inline/Unused
     //void scTargetKartRank;
     //void scCheckInterval;

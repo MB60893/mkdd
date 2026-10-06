@@ -53,6 +53,8 @@
 #include "Shiraiwa/Objects/MapObjHeyho.h"
 #include "Shiraiwa/Objects/MapObjIceBlock.h"
 #include "Shiraiwa/Objects/MapObjKpGear.h"
+#include "Shiraiwa/Objects/MapObjMare.h"
+#include "Shiraiwa/Objects/MapObjMonte.h"
 #include "Shiraiwa/Objects/MapObjMoveItemBox.h"
 #include "Shiraiwa/Objects/MapObjNoMove.h"
 #include "Shiraiwa/Objects/MapObjNossie.h"
@@ -175,29 +177,31 @@ GEO_OBJ_NEW(TMapObjDeBalloon);
 GEO_OBJ_NEW_S(TMapObjSanboHead);
 GEO_OBJ_NEW_S(TMapObjSanboBody);
 // GEO_OBJ_NEW(TMapObjRollTable);
-// GEO_OBJ_NEW(TMapObjMoveItemBox);
+GEO_OBJ_NEW(TMapObjMoveItemBox);
 GEO_OBJ_NEW(TMapObjNossie);
-// GEO_OBJ_NEW(TMapObjMareA);
-// GEO_OBJ_NEW(TMapObjMareB);
-// GEO_OBJ_NEW(TMapObjMareC);
-// GEO_OBJ_NEW(TMapObjMonteA);
-// GEO_OBJ_NEW(TMapObjMonteB);
-// GEO_OBJ_NEW(TMapObjMonteC);
-// GEO_OBJ_NEW(TMapObjMareW_A);
-// GEO_OBJ_NEW(TMapObjMareW_B);
-// GEO_OBJ_NEW(TMapObjMareW_C);
-// GEO_OBJ_NEW(TMapObjMareM_A);
+GEO_OBJ_NEW(TMapObjMareA);
+GEO_OBJ_NEW(TMapObjMareB);
+GEO_OBJ_NEW(TMapObjMareC);
+GEO_OBJ_NEW(TMapObjMonteA);
+GEO_OBJ_NEW(TMapObjMonteB);
+GEO_OBJ_NEW(TMapObjMonteC);
+GEO_OBJ_NEW(TMapObjMonteD);
+GEO_OBJ_NEW(TMapObjMonteE);
+GEO_OBJ_NEW(TMapObjMareW_A);
+GEO_OBJ_NEW(TMapObjMareW_B);
+GEO_OBJ_NEW(TMapObjMareW_C);
+GEO_OBJ_NEW(TMapObjMareM_A);
 // GEO_OBJ_NEW(TMapObjMeteor);
-// GEO_OBJ_NEW(TMapObjUkeleleMonte);
-// GEO_OBJ_NEW(TMapObjDanceMonteA);
-// GEO_OBJ_NEW(TMapObjDanceMonteB);
+GEO_OBJ_NEW(TMapObjUkleleMonte);
+GEO_OBJ_NEW(TMapObjDanceMonteA);
+GEO_OBJ_NEW(TMapObjDanceMonteB);
 GEO_OBJ_NEW(TMapObjAwardItemBox);
-// GEO_OBJ_NEW_S(TMapObjAwardCupKinoko);
-// GEO_OBJ_NEW_S(TMapObjAwardCupFlower);
-// GEO_OBJ_NEW_S(TMapObjAwardCupStar);
-// GEO_OBJ_NEW_S(TMapObjAwardCupSpecial);
-// GEO_OBJ_NEW_S(TMapObjAwardCupReverse);
-// GEO_OBJ_NEW_S(TMapObjAwardCupAllTour);
+GEO_OBJ_NEW_S(TMapObjAwardCupKinoko);
+GEO_OBJ_NEW_S(TMapObjAwardCupFlower);
+GEO_OBJ_NEW_S(TMapObjAwardCupStar);
+GEO_OBJ_NEW_S(TMapObjAwardCupSpecial);
+GEO_OBJ_NEW_S(TMapObjAwardCupReverse);
+GEO_OBJ_NEW_S(TMapObjAwardCupAllTour);
 GEO_OBJ_NEW(TMapObjAntLion);
 GEO_OBJ_NEW(TMapObjPakkun);
 GEO_OBJ_NEW(GeoKinojii);
@@ -253,3 +257,5 @@ void GeographyObjManager::getKartCollidePosRadius(JGeometry::TVec3f &kartCollide
     kartCollidePos = mKartCollidePos[p3];
     kartCollideRadius = mKartCollideRadius[p3];
 }
+
+#include "JSystem/JAudio/JASFakeMatch2.h"
