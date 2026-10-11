@@ -149,7 +149,9 @@ public:
     void clrAllCheckKartHitFlag() { mCheckKartHitFlags = 0; }
     void clrAllIsHitKartFlg() { mIsHitKartFlags = 0; }
 
-    void setObjFlagCheckItemHitting() { mGeoObjFlag |= 2; }    
+    void setCheckKartHitFlag(int kartId) { mCheckKartHitFlags |=  (1 << kartId); }
+    void setObjFlagCheckGeoHitting() { mGeoObjFlag |= 1; }
+    void setObjFlagCheckItemHitting() { mGeoObjFlag |= 2; }
     void setObjFlagSimpleDraw() { mObjFlag |= 1; }
     void setObjFlagMainResource() { mObjFlag |= 2; }
     void setObjFlagNorm() { mObjFlag |= 4; }

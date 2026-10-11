@@ -48,10 +48,12 @@
 #include "Shiraiwa/Objects/MapObjDonkyTree.h"
 #include "Shiraiwa/Objects/MapObjDossun.h"
 #include "Shiraiwa/Objects/MapObjFerriswheel.h"
+#include "Shiraiwa/Objects/MapObjFireBar.h"
 #include "Shiraiwa/Objects/MapObjFountain.h"
 #include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/Objects/MapObjHeyho.h"
 #include "Shiraiwa/Objects/MapObjIceBlock.h"
+#include "Shiraiwa/Objects/MapObjKpFire.h"
 #include "Shiraiwa/Objects/MapObjKpGear.h"
 #include "Shiraiwa/Objects/MapObjMare.h"
 #include "Shiraiwa/Objects/MapObjMonte.h"
@@ -138,7 +140,7 @@ GEO_OBJ_NEW(GeoDkCloud);
 GEO_OBJ_NEW_S(GeoWaterUp);
 GEO_OBJ_NEW_S(GeoWaterUp2);
 GEO_OBJ_NEW(GeoWater);
-// GEO_OBJ_NEW(TMapObjFireBar);
+GEO_OBJ_NEW(TMapObjFireBar);
 GEO_OBJ_NEW(GeoVision);
 GEO_OBJ_NEW(TMapObjPoihana);
 GEO_OBJ_NEW(TMapObjWall);
@@ -172,8 +174,8 @@ GEO_OBJ_NEW_S(TBalloon);
 // GEO_OBJ_NEW(TMapObjJetCoasterHead);
 // GEO_OBJ_NEW_S(TMapObjJetCoasterBody);
 GEO_OBJ_NEW(TMapObjPool);
+GEO_OBJ_NEW(TMapObjKpFire);
 GEO_OBJ_NEW(TMapObjDeBalloon);
-// GEO_OBJ_NEW(TMapObjJetKpFire);
 GEO_OBJ_NEW_S(TMapObjSanboHead);
 GEO_OBJ_NEW_S(TMapObjSanboBody);
 // GEO_OBJ_NEW(TMapObjRollTable);
@@ -208,7 +210,7 @@ GEO_OBJ_NEW(GeoKinojii);
 GEO_OBJ_NEW(TMapObjDinoTree);
 GEO_OBJ_NEW(TMapObjDemoFountain);
 GEO_OBJ_NEW(TMapObjKpGear);
-// GEO_OBJ_NEW(TMapObjKpFireBar);
+GEO_OBJ_NEW(TMapObjKpFireBar);
 GEO_OBJ_NEW(TMapObjSwimNossie);
 GEO_OBJ_NEW(TMapObjPtera);
 GEO_OBJ_NEW(TMapObjPeachTree2);
@@ -220,11 +222,13 @@ GEO_OBJ_NEW(TMapObjVentilator);
 GEO_OBJ_NEW(TMapObjUFO);
 GEO_OBJ_NEW(TMapObjMashBalloon);
 GEO_OBJ_NEW(TMapObjPathYoshiHeli);
-// GEO_OBJ_NEW(TMapObjFireBall);
+GEO_OBJ_NEW_S(TMapObjFireBall);
+GEO_OBJ_NEW_S(TMapObjKpFireBarBall);
+GEO_OBJ_NEW_S(TMapObjKpFireBall);
 GEO_OBJ_NEW_S(GeoWaterDown);
 GEO_OBJ_NEW_S(GeoWaterMiddleD);
 GEO_OBJ_NEW(TMapObjDonkyRockGen);
-// GEO_OBJ_NEW(TMapObjFireCircle);
+GEO_OBJ_NEW(TMapObjFireCircle);
 GEO_OBJ_NEW(GeoItemGen);
 // GEO_OBJ_NEW(TSMAButterflyGen);
 // GEO_OBJ_NEW(TSMADonkyBirdGen);
