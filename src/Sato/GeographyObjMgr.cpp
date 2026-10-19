@@ -56,6 +56,7 @@
 #include "Shiraiwa/Objects/MapObjKpFire.h"
 #include "Shiraiwa/Objects/MapObjKpGear.h"
 #include "Shiraiwa/Objects/MapObjMare.h"
+#include "Shiraiwa/Objects/MapObjMeteor.h"
 #include "Shiraiwa/Objects/MapObjMonte.h"
 #include "Shiraiwa/Objects/MapObjMoveItemBox.h"
 #include "Shiraiwa/Objects/MapObjNoMove.h"
@@ -193,7 +194,7 @@ GEO_OBJ_NEW(TMapObjMareW_A);
 GEO_OBJ_NEW(TMapObjMareW_B);
 GEO_OBJ_NEW(TMapObjMareW_C);
 GEO_OBJ_NEW(TMapObjMareM_A);
-// GEO_OBJ_NEW(TMapObjMeteor);
+GEO_OBJ_NEW(TMapObjMeteor);
 GEO_OBJ_NEW(TMapObjUkleleMonte);
 GEO_OBJ_NEW(TMapObjDanceMonteA);
 GEO_OBJ_NEW(TMapObjDanceMonteB);
