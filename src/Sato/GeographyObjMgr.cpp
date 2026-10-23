@@ -53,6 +53,7 @@
 #include "Shiraiwa/Objects/MapObjGeyser.h"
 #include "Shiraiwa/Objects/MapObjHeyho.h"
 #include "Shiraiwa/Objects/MapObjIceBlock.h"
+#include "Shiraiwa/Objects/MapObjJetCoaster.h"
 #include "Shiraiwa/Objects/MapObjKpFire.h"
 #include "Shiraiwa/Objects/MapObjKpGear.h"
 #include "Shiraiwa/Objects/MapObjMare.h"
@@ -172,8 +173,8 @@ GEO_OBJ_NEW(TMapObjFerriswheel);
 GEO_OBJ_NEW(TMapObjMoveItemBoxLimit);
 GEO_OBJ_NEW_S(GeoShine);
 GEO_OBJ_NEW_S(TBalloon);
-// GEO_OBJ_NEW(TMapObjJetCoasterHead);
-// GEO_OBJ_NEW_S(TMapObjJetCoasterBody);
+GEO_OBJ_NEW(TMapObjJetCoasterHead);
+GEO_OBJ_NEW_S(TMapObjJetCoasterBody);
 GEO_OBJ_NEW(TMapObjPool);
 GEO_OBJ_NEW(TMapObjKpFire);
 GEO_OBJ_NEW(TMapObjDeBalloon);
