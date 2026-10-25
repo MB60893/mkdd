@@ -56,21 +56,6 @@ public:
     virtual void setJointNo();
     void createBody(u8);
     virtual s32 getJointNo() { return sJointNo; } // 0x802c1f38
-
-    // Similar to `normalizeRelativeAngle` in MapObjWanwan class.
-    inline f32 normalizeRelativeFrame(f32 frame, f32 min, f32 max) {
-        if (min >= max) {
-            return min;
-        }
-
-        for (; frame < min; frame += max - min) {
-        }
-
-        for (; frame >= max; frame -= max - min) {
-        }
-
-        return frame;
-    }
     
     static s32 sJointNo;
     static const s32 scBodyMax;

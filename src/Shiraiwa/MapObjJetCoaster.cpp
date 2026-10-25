@@ -1,4 +1,5 @@
 #include "Shiraiwa/Objects/MapObjJetCoaster.h"
+#include "JSystem/JGeometry/Util.h"
 #include "Sato/GeographyObjMgr.h"
 #include "Sato/ObjUtility.h"
 #include "Shiraiwa/Objects/MapObjHioNode.h"
@@ -119,7 +120,7 @@ void TMapObjJetCoasterHead::reset() {
     for (int i = 0; i < mBodyCount; i++) {
         f32 offset = (i + 1) * 8.0f;
         int frameCount = getAnmCtrl()->getFrameCtrl(0)->getEnd();
-        f32 newFrame = normalizeRelativeFrame(mInitialFrame - offset, 0.0f, frameCount);
+        f32 newFrame = JGeometry::TUtilf::wrap(mInitialFrame - offset, 0.0f, frameCount);
         mJetCoasterBodies[i]->setAnimationFrame(newFrame);
     }
 }
